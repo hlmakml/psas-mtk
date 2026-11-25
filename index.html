@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Simulasi Ujian PSAS Ganjil Kelas 12 — Matematika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #eef2f0;
+        --surface: #ffffff;
+        --surface-2: #f4f7f5;
+        --ink: #1c2420;
+        --ink-soft: #4c5a53;
+        --ink-faint: #71817a;
+        --line: #d8e0db;
+        --primary: #0c6b5d;
+        --primary-dark: #084f44;
+        --primary-soft: #e1efeb;
+        --amber: #b45309;
+        --amber-soft: #fdf0dc;
+        --red: #b3352c;
+        --red-soft: #fbe9e7;
+        --green: #177245;
+        --green-soft: #e3f2e7;
+        --shadow: 0 10px 30px rgba(20, 40, 32, 0.10);
+        --radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111613;
+          --surface: #1b211e;
+          --surface-2: #232a26;
+          --ink: #e9efec;
+          --ink-soft: #b3c0b9;
+          --ink-faint: #8b9a92;
+          --line: #333d38;
+          --primary: #3dbfa9;
+          --primary-dark: #7fd8c7;
+          --primary-soft: #173832;
+          --amber: #f0b35e;
+          --amber-soft: #3d2f16;
+          --red: #f08a80;
+          --red-soft: #40201d;
+          --green: #6fce96;
+          --green-soft: #1d3527;
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.55;
+      }
+      button, input { font: inherit; }
+      button { cursor: pointer; }
+      .wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 48px; }
+      .hidden { display: none !important; }
+
+      /* ---------- Start screen ---------- */
+      .start-hero { padding: 14px 2px 4px; }
+      .start-hero .subject {
+        font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--primary); margin: 0 0 8px;
+      }
+      .start-hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(30px, 7vw, 44px); line-height: 1.08; font-weight: 900; margin: 0 0 12px;
+      }
+      .start-hero p.lead { color: var(--ink-soft); margin: 0 0 20px; font-size: 16.5px; max-width: 56ch; }
+      .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+      @media (min-width: 560px) { .info-grid { grid-template-columns: repeat(4, 1fr); } }
+      .info-cell { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+      .info-cell .num { font-size: 24px; font-weight: 800; line-height: 1.1; }
+      .info-cell .lbl { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+      .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+      .panel h2 { font-size: 17px; margin: 0 0 12px; font-weight: 800; }
+      .block-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+      .block-row:last-child { border-bottom: none; }
+      .block-row .bname { font-weight: 600; }
+      .block-row .bdetail { color: var(--ink-faint); font-size: 13.5px; white-space: nowrap; }
+      .rules { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+      .rules li { margin-bottom: 6px; }
+      .rules li:last-child { margin-bottom: 0; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        min-height: 48px; padding: 12px 22px; border-radius: 12px; border: 1px solid transparent;
+        font-weight: 700; font-size: 16px; background: var(--surface-2); color: var(--ink);
+        transition: background 0.15s ease, transform 0.05s ease;
+      }
+      .btn:active { transform: scale(0.985); }
+      .btn-primary { background: var(--primary); color: #fff; width: 100%; font-size: 17px; }
+      @media (prefers-color-scheme: dark) { .btn-primary { color: #0b1512; } }
+      .btn-primary:hover { background: var(--primary-dark); }
+      @media (prefers-color-scheme: dark) { .btn-primary:hover { background: var(--primary); filter: brightness(1.1); } }
+      .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+      .btn-danger { background: var(--red); color: #fff; }
+      @media (prefers-color-scheme: dark) { .btn-danger { color: #1c0f0d; } }
+
+      /* ---------- Exam chrome ---------- */
+      .exam-top {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--bg); padding: 12px 0 10px; margin: -20px 0 4px;
+      }
+      .exam-top-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+      .timer-chip {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+        padding: 7px 14px; font-weight: 800; font-variant-numeric: tabular-nums; font-size: 16px;
+      }
+      .timer-chip svg { flex: none; }
+      .timer-chip.low { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+      .progress-text { font-size: 13.5px; color: var(--ink-soft); font-weight: 600; text-align: right; }
+      .progress-track { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+      .progress-fill { height: 100%; background: var(--primary); border-radius: 99px; width: 0%; transition: width 0.25s ease; }
+
+      .qcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 18px; }
+      .qmeta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+      .qmeta .qnum { font-weight: 800; font-size: 15px; margin-right: 2px; }
+      .chip { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--primary-soft); color: var(--primary-dark); }
+      @media (prefers-color-scheme: dark) { .chip { color: var(--primary); } }
+      .chip.type { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
+      .qstem { font-size: 16.5px; margin-bottom: 18px; }
+      .qstem p { margin: 0 0 10px; }
+      .qstem p:last-child { margin-bottom: 0; }
+      .qstem .instruction { font-weight: 700; }
+
+      .data-table { border-collapse: collapse; margin: 12px auto; min-width: 240px; max-width: 100%; font-variant-numeric: tabular-nums; }
+      .data-table th, .data-table td { border: 1px solid var(--line); padding: 7px 16px; text-align: center; }
+      .data-table th { background: var(--surface-2); font-weight: 700; }
+      .data-table caption { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 6px; font-weight: 600; }
+
+      .barchart { display: flex; align-items: flex-end; justify-content: space-around; gap: 8px; height: 190px; padding: 10px 6px 0; border-bottom: 2px solid var(--line); margin: 14px 0 6px; }
+      .bar-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex: 1; max-width: 90px; }
+      .bar-val { font-weight: 800; font-size: 14px; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+      .bar { width: 62%; max-width: 52px; background: var(--primary); border-radius: 6px 6px 0 0; }
+      .bar-labels { display: flex; justify-content: space-around; gap: 8px; padding: 0 6px; }
+      .bar-labels span { flex: 1; max-width: 90px; text-align: center; font-size: 13px; color: var(--ink-soft); font-weight: 600; padding-top: 6px; }
+
+      .pie-wrap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: center; margin: 14px 0 4px; }
+      .pie {
+        width: 168px; height: 168px; border-radius: 50%; flex: none;
+        background: conic-gradient(#0e7a6d 0% 25%, #e09f3e 25% 55%, #4a6fa5 55% 75%, #bc4749 75% 90%, #8a8f8c 90% 100%);
+      }
+      .pie-legend { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
+      .pie-legend li { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+      .pie-legend .dot { width: 13px; height: 13px; border-radius: 3px; flex: none; }
+
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .option {
+        display: flex; align-items: flex-start; gap: 12px;
+        border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 14px;
+        cursor: pointer; min-height: 52px; background: var(--surface);
+        transition: border-color 0.12s ease, background 0.12s ease;
+      }
+      .option:hover { border-color: var(--primary); }
+      .option.selected { border-color: var(--primary); background: var(--primary-soft); }
+      .option input { width: 20px; height: 20px; margin: 2px 0 0; flex: none; accent-color: var(--primary); }
+      .option .opt-letter { font-weight: 800; color: var(--primary-dark); flex: none; }
+      @media (prefers-color-scheme: dark) { .option .opt-letter { color: var(--primary); } }
+      .option .opt-text { flex: 1; }
+      .isian-input {
+        width: 100%; min-height: 52px; padding: 12px 14px; font-size: 17px;
+        border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink);
+      }
+      .isian-input:focus { outline: 2px solid var(--primary); outline-offset: 1px; border-color: var(--primary); }
+      .mcma-note { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 10px; }
+      .mcma-note.warn { color: var(--red); font-weight: 700; }
+
+      .qactions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+      .flag-btn {
+        display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 9px 14px;
+        border-radius: 10px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-soft); font-weight: 700; font-size: 14.5px;
+      }
+      .flag-btn.active { background: var(--amber-soft); border-color: var(--amber); color: var(--amber); }
+
+      .nav-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-top: 14px; }
+      .nav-panel h3 { margin: 0 0 4px; font-size: 15px; font-weight: 800; }
+      .nav-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
+      .nav-legend .lg { display: inline-flex; align-items: center; gap: 6px; }
+      .nav-legend .swatch { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid var(--line); background: var(--surface); display: inline-block; }
+      .nav-legend .swatch.done { background: var(--primary); border-color: var(--primary); }
+      .nav-legend .swatch.flag { background: var(--amber-soft); border-color: var(--amber); }
+      .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+      @media (min-width: 560px) { .nav-grid { grid-template-columns: repeat(9, 1fr); } }
+      .nav-btn {
+        position: relative; min-height: 46px; border-radius: 10px; border: 1.5px solid var(--line);
+        background: var(--surface); color: var(--ink); font-weight: 700; font-size: 15px; padding: 6px 2px;
+      }
+      .nav-btn.done { background: var(--primary); border-color: var(--primary); color: #fff; }
+      @media (prefers-color-scheme: dark) { .nav-btn.done { color: #0b1512; } }
+      .nav-btn.current { outline: 2.5px solid var(--ink); outline-offset: 1px; }
+      .nav-btn .flagdot {
+        position: absolute; top: 4px; right: 4px; width: 9px; height: 9px; border-radius: 50%;
+        background: var(--amber); border: 1.5px solid var(--surface);
+      }
+      .nav-btn.flagged:not(.done) { background: var(--amber-soft); border-color: var(--amber); color: var(--amber); }
+
+      .exam-footer { display: flex; gap: 10px; margin-top: 16px; }
+      .exam-footer .btn { flex: 1; min-height: 50px; }
+      .exam-footer .btn-finish { flex: 1.2; }
+
+      /* ---------- Modal ---------- */
+      .modal-overlay {
+        position: fixed; inset: 0; background: rgba(10, 18, 14, 0.55); z-index: 50;
+        display: flex; align-items: flex-end; justify-content: center; padding: 0;
+      }
+      @media (min-width: 560px) { .modal-overlay { align-items: center; padding: 20px; } }
+      .modal {
+        background: var(--surface); width: 100%; max-width: 460px; max-height: 88vh; overflow: auto;
+        border-radius: 18px 18px 0 0; padding: 22px 20px calc(20px + env(safe-area-inset-bottom));
+      }
+      @media (min-width: 560px) { .modal { border-radius: 18px; } }
+      .modal h2 { margin: 0 0 8px; font-size: 20px; }
+      .modal p { color: var(--ink-soft); margin: 0 0 14px; }
+      .modal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+      .modal-stats .cell { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 6px; text-align: center; }
+      .modal-stats .cell .n { font-size: 20px; font-weight: 800; }
+      .modal-stats .cell .t { font-size: 12px; color: var(--ink-soft); }
+      .modal-btns { display: flex; flex-direction: column; gap: 10px; }
+      .modal-btns .btn { width: 100%; }
+
+      /* ---------- Result ---------- */
+      .result-head { text-align: center; padding: 10px 0 4px; }
+      .result-head .done-label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); margin: 0 0 6px; }
+      .score-big { font-family: "Fraunces", Georgia, serif; font-size: 84px; font-weight: 900; line-height: 1; margin: 0; }
+      .score-big small { font-size: 26px; color: var(--ink-faint); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 700; }
+      .score-sub { color: var(--ink-soft); margin: 10px 0 0; }
+      .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0 14px; }
+      .result-stats .cell { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 8px; text-align: center; }
+      .result-stats .cell .n { font-size: 24px; font-weight: 800; }
+      .result-stats .cell .t { font-size: 12.5px; color: var(--ink-soft); }
+      .block-score { margin-bottom: 14px; }
+      .block-score:last-child { margin-bottom: 0; }
+      .block-score .row { display: flex; justify-content: space-between; align-items: baseline; font-size: 14.5px; margin-bottom: 6px; }
+      .block-score .row .name { font-weight: 700; }
+      .block-score .row .val { color: var(--ink-soft); font-variant-numeric: tabular-nums; font-weight: 600; }
+      .block-score .track { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; }
+      .block-score .fill { height: 100%; background: var(--primary); border-radius: 99px; }
+      .review-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+      .review-item .rhead { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+      .badge { font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
+      .badge.ok { background: var(--green-soft); color: var(--green); }
+      .badge.bad { background: var(--red-soft); color: var(--red); }
+      .badge.empty { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
+      .review-item .qstem { font-size: 15.5px; margin-bottom: 12px; }
+      .answer-line { font-size: 14.5px; margin: 4px 0; }
+      .answer-line .k { color: var(--ink-faint); font-weight: 600; }
+      .answer-line.wrong { color: var(--red); }
+      .answer-line.right { color: var(--green); font-weight: 600; }
+      .explain { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; margin-top: 10px; }
+      .explain .et { font-weight: 800; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary-dark); display: block; margin-bottom: 4px; }
+      @media (prefers-color-scheme: dark) { .explain .et { color: var(--primary); } }
+      .timeout-note { background: var(--amber-soft); border: 1px solid var(--amber); color: var(--amber); border-radius: 12px; padding: 12px 14px; font-weight: 700; font-size: 14.5px; margin-bottom: 14px; text-align: center; }
+      .section-title { font-size: 19px; font-weight: 800; margin: 26px 0 12px; }
+      @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <!-- ================= START ================= -->
+      <section id="screen-start">
+        <div class="start-hero">
+          <p class="subject">Matematika · Kelas 12</p>
+          <h1>Simulasi PSAS Ganjil</h1>
+          <p class="lead">Latihan ujian Penilaian Sumatif Akhir Semester Ganjil dengan 25 soal yang disusun persis mengikuti 25 indikator resmi — dari peluang sampai statistika. Kerjakan seperti ujian sungguhan: ada batas waktu dan tidak bisa mengulang jawaban setelah selesai.</p>
+        </div>
+        <div class="info-grid">
+          <div class="info-cell"><div class="num">25</div><div class="lbl">Soal</div></div>
+          <div class="info-cell"><div class="num">90</div><div class="lbl">Menit waktu pengerjaan</div></div>
+          <div class="info-cell"><div class="num">100</div><div class="lbl">Skor maksimal</div></div>
+          <div class="info-cell"><div class="num">4</div><div class="lbl">Blok materi</div></div>
+        </div>
+        <div class="panel">
+          <h2>Materi yang diujikan</h2>
+          <div class="block-row"><span class="bname">Peluang</span><span class="bdetail">Soal 1–6 · maks 24 poin</span></div>
+          <div class="block-row"><span class="bname">Kaidah Pencacahan</span><span class="bdetail">Soal 7–10 · maks 16 poin</span></div>
+          <div class="block-row"><span class="bname">Lingkaran</span><span class="bdetail">Soal 11–17 · maks 28 poin</span></div>
+          <div class="block-row"><span class="bname">Statistika</span><span class="bdetail">Soal 18–25 · maks 32 poin</span></div>
+        </div>
+        <div class="panel">
+          <h2>Aturan pengerjaan</h2>
+          <ul class="rules">
+            <li>Setiap soal bernilai 4 poin. Tidak ada pengurangan nilai untuk jawaban salah.</li>
+            <li>Timer berjalan 90 menit dan jawaban <strong>terkirim otomatis</strong> saat waktu habis.</li>
+            <li>Soal 9 adalah isian singkat — ketik angkanya saja. Soal 13 adalah pilihan ganda kompleks: pilih <strong>3 jawaban</strong> yang benar.</li>
+            <li>Gunakan tombol nomor soal untuk berpindah, dan tandai soal yang ragu-ragu agar mudah kembali lagi.</li>
+            <li>Setelah menekan Selesai, kamu akan melihat skor total, skor per blok, dan pembahasan setiap soal.</li>
+          </ul>
+        </div>
+        <button class="btn btn-primary" id="btn-start" type="button">Mulai Ujian</button>
+      </section>
+
+      <!-- ================= EXAM ================= -->
+      <section id="screen-exam" class="hidden">
+        <div class="exam-top">
+          <div class="exam-top-row">
+            <span class="timer-chip" id="timer-chip">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+              <span id="timer-text">01:30:00</span>
+            </span>
+            <span class="progress-text" id="progress-text">0 dari 25 terjawab</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+
+        <div class="qcard" id="qcard"></div>
+
+        <div class="nav-panel">
+          <h3>Navigasi Soal</h3>
+          <div class="nav-legend">
+            <span class="lg"><span class="swatch done"></span> Sudah dijawab</span>
+            <span class="lg"><span class="swatch flag"></span> Ragu-ragu</span>
+            <span class="lg"><span class="swatch"></span> Belum dijawab</span>
+          </div>
+          <div class="nav-grid" id="nav-grid"></div>
+        </div>
+
+        <div class="exam-footer">
+          <button class="btn btn-ghost" id="btn-prev" type="button">← Sebelumnya</button>
+          <button class="btn btn-ghost" id="btn-next" type="button">Berikutnya →</button>
+          <button class="btn btn-danger btn-finish" id="btn-finish" type="button">Selesai</button>
+        </div>
+      </section>
+
+      <!-- ================= RESULT ================= -->
+      <section id="screen-result" class="hidden">
+        <div id="timeout-note" class="timeout-note hidden">Waktu habis — jawabanmu terkirim otomatis.</div>
+        <div class="result-head">
+          <p class="done-label">Hasil Simulasi</p>
+          <p class="score-big"><span id="score-total">0</span><small> / 100</small></p>
+          <p class="score-sub" id="score-sub"></p>
+        </div>
+        <div class="result-stats">
+          <div class="cell"><div class="n" id="stat-correct" style="color:var(--green)">0</div><div class="t">Benar</div></div>
+          <div class="cell"><div class="n" id="stat-wrong" style="color:var(--red)">0</div><div class="t">Salah</div></div>
+          <div class="cell"><div class="n" id="stat-empty">0</div><div class="t">Tidak dijawab</div></div>
+        </div>
+        <div class="panel">
+          <h2>Skor per Blok Materi</h2>
+          <div id="block-scores"></div>
+        </div>
+        <button class="btn btn-primary" id="btn-retry" type="button">Ulangi Ujian</button>
+        <h2 class="section-title">Pembahasan Soal</h2>
+        <div id="review-list"></div>
+        <button class="btn btn-primary" id="btn-retry-2" type="button">Ulangi Ujian</button>
+      </section>
+    </div>
+
+    <!-- ================= MODAL ================= -->
+    <div class="modal-overlay hidden" id="modal-overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <h2 id="modal-title">Selesaikan ujian?</h2>
+        <p id="modal-desc">Periksa lagi ringkasan jawabanmu sebelum mengirim.</p>
+        <div class="modal-stats">
+          <div class="cell"><div class="n" id="m-answered">0</div><div class="t">Terjawab</div></div>
+          <div class="cell"><div class="n" id="m-empty">0</div><div class="t">Belum dijawab</div></div>
+          <div class="cell"><div class="n" id="m-flagged">0</div><div class="t">Ragu-ragu</div></div>
+        </div>
+        <div class="modal-btns">
+          <button class="btn btn-danger" id="btn-confirm-finish" type="button">Ya, Selesai &amp; Lihat Hasil</button>
+          <button class="btn btn-ghost" id="btn-cancel-finish" type="button">Kembali Mengerjakan</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    "use strict";
+    var BLOCKS = {
+      peluang: "Peluang",
+      pencacahan: "Kaidah Pencacahan",
+      lingkaran: "Lingkaran",
+      statistika: "Statistika"
+    };
+    var LETTERS = ["A", "B", "C", "D", "E"];
+
+    var TABLE_18 = '<table class="data-table"><caption>Tinggi badan siswa (cm)</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>50–59</td><td>6</td></tr><tr><td>60–69</td><td>8</td></tr><tr><td>70–79</td><td>12</td></tr><tr><td>80–89</td><td>14</td></tr><tr><td>90–99</td><td>10</td></tr></table>';
+    var TABLE_19 = '<table class="data-table"><caption>Berat badan siswa (kg)</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>31–40</td><td>6</td></tr><tr><td>41–50</td><td>12</td></tr><tr><td>51–60</td><td>14</td></tr><tr><td>61–70</td><td>10</td></tr><tr><td>71–80</td><td>6</td></tr></table>';
+    var TABLE_23 = '<table class="data-table"><caption>Nilai ulangan matematika</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>30–39</td><td>10</td></tr><tr><td>40–49</td><td>20</td></tr><tr><td>50–59</td><td>20</td></tr><tr><td>60–69</td><td>20</td></tr><tr><td>70–79</td><td>10</td></tr></table>';
+
+    var BARCHART_24 =
+      '<div class="barchart" role="img" aria-label="Diagram batang jumlah siswa per ekstrakurikuler: Futsal 32, Basket 24, Voli 16, Badminton 28">' +
+      '<div class="bar-col"><span class="bar-val">32</span><div class="bar" style="height:128px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">24</span><div class="bar" style="height:96px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">16</span><div class="bar" style="height:64px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">28</span><div class="bar" style="height:112px"></div></div></div>' +
+      '<div class="bar-labels"><span>Futsal</span><span>Basket</span><span>Voli</span><span>Badminton</span></div>';
+
+    var PIE_25 =
+      '<div class="pie-wrap"><div class="pie" role="img" aria-label="Diagram lingkaran hobi siswa: Sepak Bola 25 persen, Musik 30 persen, Membaca 20 persen, Melukis 15 persen, Lainnya 10 persen"></div>' +
+      '<ul class="pie-legend">' +
+      '<li><span class="dot" style="background:#0e7a6d"></span>Sepak Bola — 25%</li>' +
+      '<li><span class="dot" style="background:#e09f3e"></span>Musik — 30%</li>' +
+      '<li><span class="dot" style="background:#4a6fa5"></span>Membaca — 20%</li>' +
+      '<li><span class="dot" style="background:#bc4749"></span>Melukis — 15%</li>' +
+      '<li><span class="dot" style="background:#8a8f8c"></span>Lainnya — 10%</li>' +
+      '</ul></div>';
+
+    var QUESTIONS = [
+      { block: "peluang", type: "pg", indicator: "Frekuensi harapan",
+        stem: "<p>Sebuah dadu bersisi enam dilempar sebanyak 180 kali. Frekuensi harapan munculnya mata dadu prima adalah … kali.</p>",
+        options: ["30", "60", "90", "120", "150"], answer: 2,
+        explain: "Mata dadu prima adalah 2, 3, dan 5, sehingga P(prima) = 3/6 = 1/2. Frekuensi harapan = P × banyak percobaan = 1/2 × 180 = 90 kali." },
+      { block: "peluang", type: "pg", indicator: "Peluang dua kejadian saling bebas",
+        stem: "<p>Sebuah dadu dan sekeping uang logam dilempar bersama-sama satu kali. Peluang muncul mata 6 pada dadu dan sisi angka pada uang logam adalah …</p>",
+        options: ["1/3", "1/6", "1/12", "1/2", "5/12"], answer: 2,
+        explain: "Kedua kejadian saling bebas, jadi peluangnya dikalikan: P = P(mata 6) × P(angka) = 1/6 × 1/2 = 1/12." },
+      { block: "peluang", type: "pg", indicator: "Peluang dua kejadian tidak saling lepas",
+        stem: "<p>Dari satu set kartu bridge (52 kartu) diambil satu kartu secara acak. Peluang terambil kartu As atau kartu hati adalah …</p>",
+        options: ["3/13", "4/13", "5/13", "17/52", "1/4"], answer: 1,
+        explain: "Kedua kejadian tidak saling lepas karena ada kartu As hati. P(As ∪ hati) = 4/52 + 13/52 − 1/52 = 16/52 = 4/13." },
+      { block: "peluang", type: "pg", indicator: "Peluang kejadian bersyarat",
+        stem: "<p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Pada pengambilan pertama terambil satu bola putih dan bola tersebut tidak dikembalikan. Peluang pada pengambilan kedua terambil bola putih lagi adalah …</p>",
+        options: ["3/8", "2/7", "3/7", "1/3", "1/4"], answer: 1,
+        explain: "Setelah satu bola putih terambil, sisa bola ada 7 dengan 2 bola putih. Jadi peluang bersyaratnya = 2/7." },
+      { block: "peluang", type: "pg", indicator: "Peluang suatu kejadian dalam kehidupan sehari-hari",
+        stem: "<p>Dalam sebuah kantong terdapat 4 kelereng merah, 6 kelereng kuning, dan 5 kelereng biru. Jika diambil satu kelereng secara acak, peluang terambil kelereng biru adalah …</p>",
+        options: ["1/5", "1/4", "1/3", "2/5", "1/2"], answer: 2,
+        explain: "Total kelereng = 4 + 6 + 5 = 15. P(biru) = 5/15 = 1/3." },
+      { block: "peluang", type: "pg", indicator: "Banyaknya anggota ruang sampel",
+        stem: "<p>Tiga keping uang logam dilempar bersama-sama satu kali. Banyaknya anggota ruang sampel percobaan tersebut adalah …</p>",
+        options: ["3", "6", "8", "12", "16"], answer: 2,
+        explain: "Setiap keping uang logam mempunyai 2 kemungkinan hasil, sehingga n(S) = 2 × 2 × 2 = 2³ = 8." },
+      { block: "pencacahan", type: "pg", indicator: "Kaidah penjumlahan (kontekstual)",
+        stem: "<p>Calon ketua OSIS berasal dari dua kelas. Kelas XII A mengajukan 5 kandidat dan kelas XII B mengajukan 4 kandidat. Ketua OSIS dipilih dari salah satu kelas tersebut. Banyaknya cara memilih ketua OSIS adalah … cara.</p>",
+        options: ["20", "9", "5", "4", "1"], answer: 1,
+        explain: "Pemilihan dilakukan dari kelas A <em>atau</em> kelas B, sehingga berlaku kaidah penjumlahan: 5 + 4 = 9 cara." },
+      { block: "pencacahan", type: "pg", indicator: "Bilangan dengan angka tidak boleh berulang",
+        stem: "<p>Dari angka-angka 1, 2, 3, 4, dan 5 akan dibentuk bilangan yang terdiri dari tiga angka berbeda. Banyaknya bilangan yang dapat dibentuk adalah …</p>",
+        options: ["20", "60", "120", "125", "243"], answer: 1,
+        explain: "Angka tidak boleh berulang, jadi dengan aturan pengisian tempat: ratusan 5 pilihan, puluhan 4 pilihan, satuan 3 pilihan. Total = 5 × 4 × 3 = 60 bilangan." },
+      { block: "pencacahan", type: "isian", indicator: "Menghitung nilai faktorial",
+        stem: "<p class=\"instruction\">Isian singkat — ketik angkanya saja.</p><p>Nilai dari 6! ⁄ 3! adalah …</p>",
+        answer: "120",
+        explain: "6! ⁄ 3! = (6 × 5 × 4 × 3!) ⁄ 3! = 6 × 5 × 4 = 120. Coret 3! pada pembilang dan penyebut terlebih dahulu." },
+      { block: "pencacahan", type: "pg", indicator: "Permutasi dalam kehidupan sehari-hari",
+        stem: "<p>Dari 7 orang siswa akan dipilih seorang ketua, seorang sekretaris, dan seorang bendahara untuk kepanitiaan class meeting. Banyaknya susunan pengurus yang mungkin adalah …</p>",
+        options: ["35", "70", "210", "840", "5.040"], answer: 2,
+        explain: "Jabatan berbeda berarti urutan diperhatikan, gunakan permutasi: P(7,3) = 7! ⁄ 4! = 7 × 6 × 5 = 210 susunan." },
+      { block: "lingkaran", type: "pg", indicator: "Jari-jari lingkaran dari luas tembereng",
+        stem: "<p>Pada sebuah lingkaran, besar sudut pusat adalah 90° dan luas temberengnya 56 cm². Jika π = 22/7, panjang jari-jari lingkaran tersebut adalah … cm.</p>",
+        options: ["7", "10", "14", "21", "28"], answer: 2,
+        explain: "Luas tembereng = luas juring − luas segitiga = (90/360)(22/7)r² − 1/2 r² = (11/14 − 1/2)r² = (2/7)r². Maka (2/7)r² = 56 → r² = 196 → r = 14 cm." },
+      { block: "lingkaran", type: "pg", indicator: "Panjang apotema",
+        stem: "<p>Sebuah lingkaran berjari-jari 10 cm mempunyai tali busur yang menghadap sudut pusat 120°. Panjang apotema tali busur tersebut adalah … cm.</p>",
+        options: ["5", "5√3", "10", "10√3", "20"], answer: 0,
+        explain: "Apotema = r cos(α/2) = 10 × cos 60° = 10 × 1/2 = 5 cm." },
+      { block: "lingkaran", type: "mcma", indicator: "Panjang tali busur (pilih 3 jawaban benar)",
+        stem: "<p>Sebuah lingkaran berjari-jari 10 cm mempunyai tali busur yang menghadap sudut pusat 120°. Pernyataan yang benar tentang tali busur tersebut adalah … <span class=\"instruction\">(Pilih 3 jawaban yang benar.)</span></p>",
+        options: [
+          "Panjang tali busur adalah 10√3 cm",
+          "Panjang tali busur kira-kira 17,32 cm",
+          "Setengah panjang tali busur adalah 5√3 cm",
+          "Panjang tali busur adalah 10 cm",
+          "Panjang tali busur sama dengan diameter lingkaran, yaitu 20 cm"
+        ], answer: [0, 1, 2],
+        explain: "Tali busur = 2r sin(α/2) = 2 × 10 × sin 60° = 20 × (√3/2) = 10√3 cm ≈ 17,32 cm. Setengahnya adalah 5√3 cm, sesuai juga dengan √(r² − apotema²) = √(100 − 25) = √75 = 5√3 cm." },
+      { block: "lingkaran", type: "pg", indicator: "Garis singgung persekutuan luar dua lingkaran",
+        stem: "<p>Dua lingkaran berpusat di P dan Q. Lingkaran pertama berjari-jari 8 cm dan lingkaran kedua berjari-jari 3 cm. Jarak kedua pusat PQ = 13 cm. Jika A titik singgung pada lingkaran pertama dan B titik singgung pada lingkaran kedua, panjang AB (garis singgung persekutuan luar) adalah … cm.</p>",
+        options: ["10", "12", "13", "15", "17"], answer: 1,
+        explain: "Garis singgung persekutuan luar: AB² = PQ² − (R − r)² = 13² − (8 − 3)² = 169 − 25 = 144, sehingga AB = 12 cm." },
+      { block: "lingkaran", type: "pg", indicator: "Jarak kedua pusat dari garis singgung persekutuan luar",
+        stem: "<p>Dua buah lingkaran masing-masing berjari-jari 9 cm dan 4 cm. Panjang garis singgung persekutuan luar kedua lingkaran adalah 12 cm. Jarak kedua pusat lingkaran tersebut adalah … cm.</p>",
+        options: ["12", "13", "15", "17", "20"], answer: 1,
+        explain: "p² = d² + (R − r)² = 12² + (9 − 4)² = 144 + 25 = 169, sehingga jarak kedua pusat p = 13 cm." },
+      { block: "lingkaran", type: "pg", indicator: "Sudut keliling dan sudut pusat",
+        stem: "<p>Pada sebuah lingkaran, sudut pusat AOB besarnya 80° dan menghadap busur AB. Sudut keliling ACB juga menghadap busur AB. Besar sudut keliling ACB adalah …</p>",
+        options: ["20°", "40°", "80°", "160°", "180°"], answer: 1,
+        explain: "Sudut keliling yang menghadap busur yang sama besarnya setengah sudut pusat: 1/2 × 80° = 40°." },
+      { block: "lingkaran", type: "pg", indicator: "Sudut di dalam lingkaran (segi empat tali busur)",
+        stem: "<p>Segi empat ABCD adalah segi empat tali busur. Jika besar ∠A = 110°, ∠B = 85°, dan ∠D = 95°, besar ∠C adalah …</p>",
+        options: ["70°", "75°", "85°", "95°", "110°"], answer: 0,
+        explain: "Pada segi empat tali busur, sudut-sudut yang berhadapan jumlahnya 180°. ∠A berhadapan dengan ∠C, jadi ∠C = 180° − 110° = 70°." },
+      { block: "statistika", type: "pg", indicator: "Desil data berkelompok",
+        stem: "<p>Data tinggi badan 50 siswa disajikan pada tabel berikut.</p>" + TABLE_18 + "<p>Desil ke-4 (D<sub>4</sub>) dari data tersebut adalah …</p>",
+        options: ["72,5", "73,5", "74,5", "75,5", "76,5"], answer: 2,
+        explain: "Letak D₄ = 4/10 × 50 = data ke-20, terletak pada kelas 70–79 (Tb = 69,5; F = 14; f = 12; p = 10). D₄ = 69,5 + 10 × ((20 − 14)/12) = 69,5 + 5 = 74,5." },
+      { block: "statistika", type: "pg", indicator: "Kuartil data berkelompok",
+        stem: "<p>Data berat badan 48 siswa disajikan pada tabel berikut.</p>" + TABLE_19 + "<p>Kuartil pertama (Q<sub>1</sub>) dari data tersebut adalah …</p>",
+        options: ["43,5", "44,5", "45,5", "46,5", "47,5"], answer: 2,
+        explain: "Letak Q₁ = 1/4 × 48 = data ke-12, terletak pada kelas 41–50 (Tb = 40,5; F = 6; f = 12; p = 10). Q₁ = 40,5 + 10 × ((12 − 6)/12) = 40,5 + 5 = 45,5." },
+      { block: "statistika", type: "pg", indicator: "Ragam suatu data",
+        stem: "<p>Ragam (varians) dari data 4, 6, 8, 10 adalah …</p>",
+        options: ["3", "4", "5", "6", "7"], answer: 2,
+        explain: "Rata-rata x̄ = (4 + 6 + 8 + 10)/4 = 7. Ragam = ((4−7)² + (6−7)² + (8−7)² + (10−7)²)/4 = (9 + 1 + 1 + 9)/4 = 20/4 = 5." },
+      { block: "statistika", type: "pg", indicator: "Varians data tunggal",
+        stem: "<p>Varians dari data tunggal 4, 5, 6, 7, 8 adalah …</p>",
+        options: ["1", "2", "3", "4", "5"], answer: 1,
+        explain: "Rata-rata x̄ = 6. Varians = ((4−6)² + (5−6)² + (6−6)² + (7−6)² + (8−6)²)/5 = (4 + 1 + 0 + 1 + 4)/5 = 10/5 = 2." },
+      { block: "statistika", type: "pg", indicator: "Simpangan baku data tunggal",
+        stem: "<p>Simpangan baku dari data tunggal 4, 6, 7, 8, 10 adalah …</p>",
+        options: ["1", "√2", "2", "4", "5"], answer: 2,
+        explain: "Rata-rata x̄ = 7. Varians = ((4−7)² + (6−7)² + (7−7)² + (8−7)² + (10−7)²)/5 = (9 + 1 + 0 + 1 + 9)/5 = 20/5 = 4. Simpangan baku = √4 = 2." },
+      { block: "statistika", type: "pg", indicator: "Simpangan kuartil data kelompok",
+        stem: "<p>Data nilai ulangan 80 siswa disajikan pada tabel berikut.</p>" + TABLE_23 + "<p>Simpangan kuartil dari data tersebut adalah …</p>",
+        options: ["5", "8", "10", "20", "40"], answer: 2,
+        explain: "Q₁ terletak pada kelas 40–49: Q₁ = 39,5 + 10 × ((20 − 10)/20) = 44,5. Q₃ terletak pada kelas 60–69: Q₃ = 59,5 + 10 × ((60 − 50)/20) = 64,5. Simpangan kuartil = 1/2 × (Q₃ − Q₁) = 1/2 × 20 = 10." },
+      { block: "statistika", type: "pg", indicator: "Interpretasi diagram batang",
+        stem: "<p>Diagram batang berikut menunjukkan banyaknya siswa yang memilih ekstrakurikuler di suatu sekolah.</p>" + BARCHART_24 + "<p>Banyaknya siswa yang memilih Futsal dan Voli adalah … siswa.</p>",
+        options: ["40", "44", "48", "56", "60"], answer: 2,
+        explain: "Dari diagram, Futsal dipilih 32 siswa dan Voli dipilih 16 siswa. Jumlahnya = 32 + 16 = 48 siswa." },
+      { block: "statistika", type: "pg", indicator: "Interpretasi diagram lingkaran",
+        stem: "<p>Diagram lingkaran berikut menunjukkan hobi 400 siswa di suatu sekolah.</p>" + PIE_25 + "<p>Banyaknya siswa yang mempunyai hobi musik adalah … siswa.</p>",
+        options: ["80", "100", "120", "140", "160"], answer: 2,
+        explain: "Bagian musik pada diagram lingkaran adalah 30%. Banyak siswa = 30/100 × 400 = 120 siswa." }
+    ];
+
+    /* ================= State ================= */
+    var TOTAL_TIME = 90 * 60; /* 90 menit, dalam detik */
+    var current = 0;
+    var answers = {};   /* pg: index, mcma: array index, isian: string */
+    var flagged = {};   /* nomor soal (index) -> true */
+    var remaining = TOTAL_TIME;
+    var timerId = null;
+    var examRunning = false;
+    var startStamp = null;
+    var elapsedUsed = 0;
+
+    function $(id) { return document.getElementById(id); }
+
+    function isAnswered(q) {
+      var a = answers[q];
+      if (a === undefined || a === null) return false;
+      var item = QUESTIONS[q];
+      if (item.type === "mcma") return a.length > 0;
+      if (item.type === "isian") return String(a).trim() !== "";
+      return true;
+    }
+    function answeredCount() {
+      var n = 0;
+      for (var i = 0; i < QUESTIONS.length; i++) if (isAnswered(i)) n++;
+      return n;
+    }
+    function flaggedCount() {
+      var n = 0;
+      for (var k in flagged) if (flagged[k]) n++;
+      return n;
+    }
+
+    /* ================= Exam flow ================= */
+    function showScreen(name) {
+      $("screen-start").classList.toggle("hidden", name !== "start");
+      $("screen-exam").classList.toggle("hidden", name !== "exam");
+      $("screen-result").classList.toggle("hidden", name !== "result");
+      window.scrollTo(0, 0);
+    }
+
+    function startExam() {
+      current = 0;
+      answers = {};
+      flagged = {};
+      remaining = TOTAL_TIME;
+      examRunning = true;
+      startStamp = Date.now();
+      showScreen("exam");
+      buildNav();
+      renderQuestion();
+      updateChrome();
+      if (timerId) clearInterval(timerId);
+      timerId = setInterval(tick, 1000);
+      tick();
+    }
+
+    function tick() {
+      if (!examRunning) return;
+      var elapsed = Math.floor((Date.now() - startStamp) / 1000);
+      remaining = Math.max(0, TOTAL_TIME - elapsed);
+      var h = Math.floor(remaining / 3600);
+      var m = Math.floor((remaining % 3600) / 60);
+      var s = remaining % 60;
+      function pad(n) { return (n < 10 ? "0" : "") + n; }
+      $("timer-text").textContent = pad(h) + ":" + pad(m) + ":" + pad(s);
+      $("timer-chip").classList.toggle("low", remaining <= 300);
+      if (remaining <= 0) finishExam(true);
+    }
+
+    function renderQuestion() {
+      var q = QUESTIONS[current];
+      var html = "";
+      html += '<div class="qmeta"><span class="qnum">Soal ' + (current + 1) + ' dari 25</span>' +
+        '<span class="chip">' + BLOCKS[q.block] + '</span>' +
+        '<span class="chip type">' + (q.type === "pg" ? "Pilihan Ganda" : q.type === "mcma" ? "Pilihan Ganda Kompleks" : "Isian Singkat") + '</span></div>';
+      html += '<div class="qstem">' + q.stem + '</div>';
+
+      if (q.type === "pg") {
+        html += '<div class="options" role="radiogroup" aria-label="Pilihan jawaban">';
+        for (var i = 0; i < q.options.length; i++) {
+          var sel = answers[current] === i;
+          html += '<label class="option' + (sel ? " selected" : "") + '">' +
+            '<input type="radio" name="qopt" value="' + i + '"' + (sel ? " checked" : "") + '>' +
+            '<span class="opt-letter">' + LETTERS[i] + '.</span>' +
+            '<span class="opt-text">' + q.options[i] + '</span></label>';
+        }
+        html += '</div>';
+      } else if (q.type === "mcma") {
+        var chosen = answers[current] || [];
+        html += '<p class="mcma-note" id="mcma-note">Terpilih ' + chosen.length + ' dari 3 jawaban.</p>';
+        html += '<div class="options">';
+        for (var j = 0; j < q.options.length; j++) {
+          var on = chosen.indexOf(j) !== -1;
+          html += '<label class="option' + (on ? " selected" : "") + '">' +
+            '<input type="checkbox" name="qopt" value="' + j + '"' + (on ? " checked" : "") + '>' +
+            '<span class="opt-letter">' + LETTERS[j] + '.</span>' +
+            '<span class="opt-text">' + q.options[j] + '</span></label>';
+        }
+        html += '</div>';
+      } else {
+        var val = answers[current] || "";
+        html += '<input class="isian-input" id="isian-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Ketik jawabanmu di sini (angka saja)" value="' + val.replace(/"/g, "&quot;") + '" aria-label="Jawaban isian">';
+      }
+
+      html += '<div class="qactions"><button type="button" class="flag-btn' + (flagged[current] ? " active" : "") + '" id="btn-flag">' +
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="' + (flagged[current] ? "currentColor" : "none") + '" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4"/><path d="M4 4h13l-2.5 4L17 12H4"/></svg>' +
+        (flagged[current] ? "Ditandai ragu-ragu" : "Tandai ragu-ragu") + '</button></div>';
+
+      $("qcard").innerHTML = html;
+
+      var radios = document.querySelectorAll('input[name="qopt"]');
+      for (var r = 0; r < radios.length; r++) {
+        radios[r].addEventListener("change", onOptionChange);
+      }
+      var isian = $("isian-input");
+      if (isian) {
+        isian.addEventListener("input", function () {
+          answers[current] = this.value;
+          updateChrome();
+        });
+      }
+      $("btn-flag").addEventListener("click", function () {
+        flagged[current] = !flagged[current];
+        if (!flagged[current]) delete flagged[current];
+        renderQuestion();
+        updateChrome();
+      });
+
+      $("btn-prev").disabled = current === 0;
+      $("btn-prev").style.opacity = current === 0 ? "0.45" : "1";
+      $("btn-next").textContent = current === QUESTIONS.length - 1 ? "Soal Terakhir" : "Berikutnya →";
+      $("btn-next").disabled = current === QUESTIONS.length - 1;
+      $("btn-next").style.opacity = current === QUESTIONS.length - 1 ? "0.45" : "1";
+    }
+
+    function onOptionChange(e) {
+      var q = QUESTIONS[current];
+      var v = parseInt(e.target.value, 10);
+      if (q.type === "pg") {
+        answers[current] = v;
+      } else if (q.type === "mcma") {
+        var arr = answers[current] ? answers[current].slice() : [];
+        if (e.target.checked) {
+          if (arr.length >= 3) {
+            e.target.checked = false;
+            var note = $("mcma-note");
+            if (note) { note.textContent = "Sudah 3 jawaban terpilih. Lepas salah satu dulu untuk mengganti."; note.classList.add("warn"); }
+            return;
+          }
+          arr.push(v);
+        } else {
+          arr = arr.filter(function (x) { return x !== v; });
+        }
+        arr.sort();
+        answers[current] = arr;
+      }
+      renderQuestion();
+      updateChrome();
+    }
+
+    function buildNav() {
+      var html = "";
+      for (var i = 0; i < QUESTIONS.length; i++) {
+        html += '<button type="button" class="nav-btn" data-nav="' + i + '" aria-label="Ke soal ' + (i + 1) + '">' + (i + 1) + '</button>';
+      }
+      $("nav-grid").innerHTML = html;
+      var btns = document.querySelectorAll("[data-nav]");
+      for (var b = 0; b < btns.length; b++) {
+        btns[b].addEventListener("click", function () {
+          current = parseInt(this.getAttribute("data-nav"), 10);
+          renderQuestion();
+          updateChrome();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    }
+
+    function updateChrome() {
+      var done = answeredCount();
+      $("progress-text").textContent = done + " dari 25 terjawab";
+      $("progress-fill").style.width = (done / QUESTIONS.length * 100) + "%";
+      var btns = document.querySelectorAll("[data-nav]");
+      for (var i = 0; i < btns.length; i++) {
+        var idx = parseInt(btns[i].getAttribute("data-nav"), 10);
+        btns[i].classList.toggle("done", isAnswered(idx));
+        btns[i].classList.toggle("flagged", !!flagged[idx]);
+        btns[i].classList.toggle("current", idx === current);
+        var dot = btns[i].querySelector(".flagdot");
+        if (flagged[idx] && !dot) {
+          var d = document.createElement("span");
+          d.className = "flagdot";
+          btns[i].appendChild(d);
+        } else if (!flagged[idx] && dot) {
+          dot.remove();
+        }
+      }
+    }
+
+    function openConfirm() {
+      $("m-answered").textContent = answeredCount();
+      $("m-empty").textContent = QUESTIONS.length - answeredCount();
+      $("m-flagged").textContent = flaggedCount();
+      $("modal-desc").textContent = remaining > 0
+        ? "Masih ada sisa waktu " + Math.floor(remaining / 60) + " menit. Setelah dikirim, jawaban tidak bisa diubah lagi."
+        : "Waktu pengerjaan sudah habis.";
+      $("modal-overlay").classList.remove("hidden");
+    }
+    function closeConfirm() { $("modal-overlay").classList.add("hidden"); }
+
+    /* ================= Scoring & result ================= */
+    function isCorrect(idx) {
+      var q = QUESTIONS[idx];
+      if (!isAnswered(idx)) return false;
+      var a = answers[idx];
+      if (q.type === "pg") return a === q.answer;
+      if (q.type === "isian") {
+        var norm = String(a).trim().replace(/\./g, "").replace(",", ".");
+        return parseFloat(norm) === parseFloat(q.answer);
+      }
+      if (q.type === "mcma") {
+        if (a.length !== q.answer.length) return false;
+        var sorted = a.slice().sort();
+        for (var i = 0; i < sorted.length; i++) if (sorted[i] !== q.answer[i]) return false;
+        return true;
+      }
+      return false;
+    }
+
+    function answerText(idx, which) {
+      var q = QUESTIONS[idx];
+      var a = which === "user" ? answers[idx] : null;
+      if (q.type === "pg") {
+        if (which === "user") return isAnswered(idx) ? LETTERS[a] + ". " + q.options[a] : "Tidak dijawab";
+        return LETTERS[q.answer] + ". " + q.options[q.answer];
+      }
+      if (q.type === "mcma") {
+        if (which === "user") {
+          if (!isAnswered(idx)) return "Tidak dijawab";
+          return a.slice().sort().map(function (i) { return LETTERS[i] + ". " + q.options[i]; }).join("; ");
+        }
+        return q.answer.map(function (i) { return LETTERS[i] + ". " + q.options[i]; }).join("; ");
+      }
+      if (which === "user") return isAnswered(idx) ? String(a).trim() : "Tidak dijawab";
+      return q.answer;
+    }
+
+    function finishExam(auto) {
+      if (!examRunning && !auto) return;
+      if (!examRunning) return;
+      examRunning = false;
+      if (timerId) clearInterval(timerId);
+      elapsedUsed = Math.min(TOTAL_TIME, Math.floor((Date.now() - startStamp) / 1000));
+      closeConfirm();
+
+      var correct = 0, empty = 0;
+      var blockStat = {};
+      var order = ["peluang", "pencacahan", "lingkaran", "statistika"];
+      order.forEach(function (b) { blockStat[b] = { total: 0, correct: 0 }; });
+      QUESTIONS.forEach(function (q, i) {
+        blockStat[q.block].total++;
+        if (!isAnswered(i)) empty++;
+        else if (isCorrect(i)) { correct++; blockStat[q.block].correct++; }
+      });
+      var wrong = QUESTIONS.length - correct - empty;
+      var score = correct * 4;
+
+      $("timeout-note").classList.toggle("hidden", !auto);
+      $("score-total").textContent = score;
+      var mins = Math.floor(elapsedUsed / 60), secs = elapsedUsed % 60;
+      $("score-sub").textContent = "Kamu menjawab benar " + correct + " dari 25 soal dalam waktu " +
+        (mins > 0 ? mins + " menit " : "") + secs + " detik." +
+        (score >= 80 ? " Kerja yang bagus — pertahankan!" : score >= 60 ? " Sudah cukup baik, tinjau lagi blok yang masih lemah di bawah." : " Jangan menyerah — pelajari pembahasannya dan coba lagi.");
+
+      $("stat-correct").textContent = correct;
+      $("stat-wrong").textContent = wrong;
+      $("stat-empty").textContent = empty;
+
+      var bs = "";
+      order.forEach(function (b) {
+        var st = blockStat[b];
+        var pts = st.correct * 4, max = st.total * 4;
+        bs += '<div class="block-score"><div class="row"><span class="name">' + BLOCKS[b] + '</span>' +
+          '<span class="val">' + st.correct + '/' + st.total + ' benar · ' + pts + '/' + max + ' poin</span></div>' +
+          '<div class="track"><div class="fill" style="width:' + (max ? pts / max * 100 : 0) + '%"></div></div></div>';
+      });
+      $("block-scores").innerHTML = bs;
+
+      var rv = "";
+      QUESTIONS.forEach(function (q, i) {
+        var ok = isCorrect(i);
+        var answered = isAnswered(i);
+        var badge = !answered ? '<span class="badge empty">Tidak dijawab</span>' : ok ? '<span class="badge ok">Benar · +4</span>' : '<span class="badge bad">Salah · 0</span>';
+        rv += '<article class="review-item"><div class="rhead"><strong>Soal ' + (i + 1) + '</strong>' +
+          '<span class="chip">' + BLOCKS[q.block] + '</span>' + badge + '</div>' +
+          '<div class="qstem">' + q.stem + '</div>' +
+          '<p class="answer-line' + (answered && !ok ? " wrong" : "") + '"><span class="k">Jawabanmu:</span> ' + escapeHtml(answerText(i, "user")) + '</p>' +
+          '<p class="answer-line right"><span class="k">Kunci jawaban:</span> ' + escapeHtml(answerText(i, "key")) + '</p>' +
+          '<div class="explain"><span class="et">Pembahasan</span>' + q.explain + '</div></article>';
+      });
+      $("review-list").innerHTML = rv;
+
+      showScreen("result");
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    /* ================= Wiring ================= */
+    $("btn-start").addEventListener("click", startExam);
+    $("btn-prev").addEventListener("click", function () {
+      if (current > 0) { current--; renderQuestion(); updateChrome(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+    });
+    $("btn-next").addEventListener("click", function () {
+      if (current < QUESTIONS.length - 1) { current++; renderQuestion(); updateChrome(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+    });
+    $("btn-finish").addEventListener("click", openConfirm);
+    $("btn-cancel-finish").addEventListener("click", closeConfirm);
+    $("btn-confirm-finish").addEventListener("click", function () { finishExam(false); });
+    $("modal-overlay").addEventListener("click", function (e) { if (e.target === this) closeConfirm(); });
+    $("btn-retry").addEventListener("click", startExam);
+    $("btn-retry-2").addEventListener("click", startExam);
+    </script>
+  </body>
+</html>
