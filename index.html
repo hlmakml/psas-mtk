@@ -37,6 +37,8 @@
       }
       * { box-sizing: border-box; }
       html { -webkit-text-size-adjust: 100%; }
+      html, body { overflow-x: clip; }
+      img, svg, video { max-width: 100%; }
       body {
         margin: 0;
         background: var(--bg);
@@ -71,7 +73,7 @@
       .block-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
       .block-row:last-child { border-bottom: none; }
       .block-row .bname { font-weight: 600; }
-      .block-row .bdetail { color: var(--ink-faint); font-size: 13.5px; white-space: nowrap; }
+      .block-row .bdetail { color: var(--ink-faint); font-size: 13.5px; text-align: right; }
       .rules { margin: 0; padding-left: 20px; color: var(--ink-soft); }
       .rules li { margin-bottom: 6px; }
       .rules li:last-child { margin-bottom: 0; }
@@ -109,7 +111,7 @@
       .qmeta .qnum { font-weight: 800; font-size: 15px; margin-right: 2px; }
       .chip { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 0px; background: var(--primary-soft); color: var(--primary-dark); }
       .chip.type { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
-      .qstem { font-size: 16.5px; margin-bottom: 18px; }
+      .qstem { font-size: 16.5px; margin-bottom: 18px; overflow-x: auto; }
       .qstem p { margin: 0 0 10px; }
       .qstem p:last-child { margin-bottom: 0; }
       .qstem .instruction { font-weight: 700; }
@@ -282,6 +284,77 @@
       @media (max-width: 900px) {
         .materi-guide .hero-left, .materi-guide .hero-right, .materi-guide .col-4, .materi-guide .col-6 { grid-column: 1 / 13; }
         .materi-guide .hero-right { border-left: none; border-top: 2px solid var(--ink); padding-left: 0; padding-top: 16px; }
+      }
+
+      /* ---------- Mobile (<=560px): layar kecil jadi prioritas ---------- */
+      @media (max-width: 560px) {
+        .wrap { padding: 16px 14px calc(32px + env(safe-area-inset-bottom)); }
+        .start-hero { padding: 8px 0 4px; }
+        .start-hero h1 { font-size: clamp(28px, 9vw, 34px); }
+        .start-hero p.lead { font-size: 15.5px; }
+        .info-grid { gap: 8px; }
+        .info-cell .num { font-size: 26px; }
+        .info-cell .lbl { font-size: 12.5px; }
+        .panel { padding: 14px 0; }
+        .block-row { flex-wrap: wrap; gap: 2px 12px; }
+        .block-row .bdetail { text-align: left; }
+        .btn { min-height: 52px; font-size: 16px; padding: 12px 16px; }
+        /* Header ujian: timer + progres tetap muat satu baris */
+        .exam-top { margin: -16px 0 4px; padding: 10px 0 8px; }
+        .timer-chip { font-size: 15px; padding: 7px 12px; }
+        .progress-text { font-size: 12px; }
+        .qcard { padding: 16px 0; }
+        .qstem { font-size: 16px; }
+        .data-table th, .data-table td { padding: 6px 10px; font-size: 14px; }
+        .option { padding: 14px 12px; min-height: 56px; gap: 10px; }
+        .option input { width: 22px; height: 22px; }
+        .isian-input { font-size: 17px; min-height: 56px; }
+        .flag-btn { min-height: 48px; width: 100%; justify-content: center; }
+        .nav-grid { gap: 6px; }
+        .nav-btn { min-height: 48px; font-size: 15px; }
+        /* Footer ujian: Sebelumnya/Berikutnya berdampingan, Selesai full-width di bawah */
+        .exam-footer { display: grid; grid-template-columns: 1fr 1fr; }
+        .exam-footer .btn-finish { grid-column: 1 / -1; }
+        .exam-footer .btn { padding: 12px 8px; font-size: 15px; }
+        .modal { padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); }
+        .modal-stats { gap: 6px; }
+        /* Hasil: skor tidak meluber di layar 320px */
+        .score-big { font-size: 64px; }
+        .result-stats .cell { padding: 12px 4px; }
+        .result-stats .cell .n { font-size: 21px; }
+        .block-score .row { flex-wrap: wrap; gap: 2px 8px; }
+        .block-score .row .val { font-size: 13px; }
+        .review-item .qstem { font-size: 15px; }
+        /* Diagram batang & lingkaran soal: label tidak terpotong */
+        .barchart { height: 170px; }
+        .bar-labels span { font-size: 11.5px; }
+        .pie-wrap { flex-direction: column; gap: 12px; }
+        .pie { width: 150px; height: 150px; }
+        .pie-legend { width: 100%; }
+        /* Pembahasan Materi di HP */
+        .materi-top { flex-direction: column; }
+        .materi-top .btn { width: 100%; min-width: 0; }
+        .materi-nav { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .materi-nav a { flex: none; }
+        .materi-guide h1 { font-size: clamp(26px, 8.5vw, 34px); }
+        .materi-guide h2 { font-size: 22px; }
+        .materi-guide p, .materi-guide .deck { font-size: 15.5px; }
+        .materi-guide .emphasis-num { font-size: 52px; }
+        .materi-guide .sec-s { margin-top: 36px; }
+        /* SVG panduan (grafik batang & diagram lingkaran): bisa digeser
+           horizontal, teks tetap terbaca, tidak mengecil sampai tak terbaca */
+        .materi-guide figure { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+        .materi-guide figure svg { min-width: 560px; }
+        /* Tabel panduan: kolom tidak remuk, geser horizontal bila perlu */
+        .materi-guide table { min-width: 620px; }
+        .materi-guide td { font-size: 14px; padding: 11px 10px 11px 0; }
+        .materi-guide .band-dark { margin: 36px -14px 0; padding: 32px 16px; }
+      }
+      @media (max-width: 360px) {
+        .wrap { padding-left: 12px; padding-right: 12px; }
+        .nav-grid { gap: 5px; }
+        .timer-chip { font-size: 14px; }
+        .score-big { font-size: 56px; }
       }
       @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
     </style>
