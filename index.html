@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light" />
     <link rel="icon" href="data:," />
     <title>Simulasi Ujian PSAS Ganjil Kelas 12 — Matematika</title>
-    <meta name="description" content="Simulasi ujian PSAS Ganjil Kelas 12 Matematika: 25 soal, timer 90 menit, plus pembahasan materi rumus dan strategi." />
+    <meta name="description" content="Persiapan PSAS Ganjil Kelas 12 Matematika: pembahasan materi lengkap (3 bab, rumus & trik) plus simulasi latihan 25 soal dengan timer 90 menit dan skor." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
@@ -242,6 +242,27 @@
       .timeout-note { background: var(--amber-soft); border: 1px solid var(--amber); color: var(--amber); border-radius: 0px; padding: 12px 14px; font-weight: 700; font-size: 14.5px; margin-bottom: 14px; text-align: center; }
       .section-title { font-family: "Space Grotesk", sans-serif; font-size: 19px; font-weight: 700; margin: 26px 0 12px; letter-spacing: -0.02em; }
 
+
+      /* ---------- Landing: dua fitur utama ---------- */
+      .feature-grid { display: grid; gap: 12px; margin-bottom: 18px; }
+      @media (min-width: 560px) { .feature-grid { grid-template-columns: 1fr 1fr; } }
+      .feature-card { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--ink); padding: 16px; display: flex; flex-direction: column; }
+      .feature-card.indigo { border-top-color: var(--primary); }
+      .feature-card.teal { border-top-color: var(--teal); }
+      .feature-tag { font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-dark); margin: 0 0 8px; }
+      .feature-card.teal .feature-tag { color: var(--teal-dark); }
+      .feature-card h3 { font-family: "Space Grotesk", sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px; }
+      .feature-card p { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 12px; }
+      .feature-list { margin: 0 0 16px; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; }
+      .feature-list li { margin-bottom: 5px; }
+      .feature-list li:last-child { margin-bottom: 0; }
+      .feature-card .btn { margin-top: auto; width: 100%; }
+      .steps { display: grid; gap: 10px; margin-bottom: 14px; }
+      @media (min-width: 560px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+      .step { border-top: 1px solid var(--line); padding-top: 12px; }
+      .step-num { font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 600; color: var(--primary-dark); display: block; margin-bottom: 4px; }
+      .step strong { display: block; font-size: 15px; margin-bottom: 2px; }
+      .step span { font-size: 13.5px; color: var(--ink-soft); }
       /* ---------- Pembahasan Materi (gaya Panduan Belajar) ---------- */
       .materi-top { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
       .materi-top .btn { flex: 1; min-width: 160px; }
@@ -331,6 +352,7 @@
         .pie-wrap { flex-direction: column; gap: 12px; }
         .pie { width: 150px; height: 150px; }
         .pie-legend { width: 100%; }
+        .feature-card { padding: 14px; }
         /* Pembahasan Materi di HP */
         .materi-top { flex-direction: column; }
         .materi-top .btn { width: 100%; min-width: 0; }
@@ -365,15 +387,49 @@
       <!-- ================= START ================= -->
       <section id="screen-start">
         <div class="start-hero">
-          <p class="subject">Matematika · Kelas 12</p>
-          <h1>Simulasi PSAS Ganjil</h1>
-          <p class="lead">Latihan ujian Penilaian Sumatif Akhir Semester Ganjil dengan 25 soal yang disusun persis mengikuti 25 indikator resmi — dari peluang sampai statistika. Kerjakan seperti ujian sungguhan: ada batas waktu dan tidak bisa mengulang jawaban setelah selesai.</p>
+          <p class="subject">Matematika · Kelas 12 · PSAS Ganjil</p>
+          <h1>Belajar materinya, latih soalnya.</h1>
+          <p class="lead">Satu tempat persiapan PSAS Ganjil Matematika: <strong>pelajari dulu</strong> rumus dan strateginya di Pembahasan Materi, lalu <strong>uji dirimu</strong> lewat simulasi 25 soal yang disusun persis mengikuti 25 indikator resmi — dari peluang sampai statistika.</p>
         </div>
         <div class="info-grid">
           <div class="info-cell"><div class="num">25</div><div class="lbl">Soal</div></div>
           <div class="info-cell"><div class="num">90</div><div class="lbl">Menit waktu pengerjaan</div></div>
           <div class="info-cell"><div class="num">100</div><div class="lbl">Skor maksimal</div></div>
-          <div class="info-cell"><div class="num">4</div><div class="lbl">Blok materi</div></div>
+          <div class="info-cell"><div class="num">3</div><div class="lbl">Bab pembahasan materi</div></div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card indigo">
+            <p class="feature-tag">1 · Pelajari dulu</p>
+            <h3>Pembahasan Materi</h3>
+            <p>Rumus wajib hafal, trik cepat, dan contoh hitung untuk semua 25 indikator — bukan sekadar kunci jawaban.</p>
+            <ul class="feature-list">
+              <li><strong>Bab 1</strong> — Peluang &amp; Kaidah Pencacahan (No. 1–10)</li>
+              <li><strong>Bab 2</strong> — Lingkaran: tembereng, apotema, tali busur (No. 11–17)</li>
+              <li><strong>Bab 3</strong> — Statistika &amp; diagram (No. 18–25)</li>
+              <li>3 contoh hitung cepat untuk soal paling rawan salah</li>
+            </ul>
+            <button class="btn btn-ghost" id="btn-materi-card" type="button">Buka Pembahasan Materi</button>
+          </article>
+          <article class="feature-card teal">
+            <p class="feature-tag">2 · Uji dirimu</p>
+            <h3>Latihan Soal — Simulasi Ujian</h3>
+            <p>Kerjakan seperti ujian sungguhan: ada batas waktu dan jawaban tidak bisa diubah setelah selesai.</p>
+            <ul class="feature-list">
+              <li><strong>25 soal</strong> — 23 PG, 1 isian (No. 9), 1 MCMA pilih 3 (No. 13)</li>
+              <li>Timer <strong>90 menit</strong>, jawaban terkirim otomatis saat habis</li>
+              <li>Navigasi nomor 1–25 &amp; tanda ragu-ragu</li>
+              <li>Skor total /100, skor per blok, + pembahasan tiap soal</li>
+            </ul>
+            <button class="btn btn-primary" id="btn-start-card" type="button">Mulai Latihan Soal</button>
+          </article>
+        </div>
+        <div class="panel">
+          <h2>Cara pakai — 3 langkah</h2>
+          <div class="steps">
+            <div class="step"><span class="step-num">01</span><strong>Pelajari materinya</strong><span>Buka Pembahasan Materi, hafalkan rumus dan trik tiap bab.</span></div>
+            <div class="step"><span class="step-num">02</span><strong>Kerjakan simulasinya</strong><span>25 soal, 90 menit, seperti ujian sungguhan.</span></div>
+            <div class="step"><span class="step-num">03</span><strong>Tinjau &amp; ulangi</strong><span>Lihat skor per blok dan pembahasan, lalu ulangi blok yang masih lemah.</span></div>
+          </div>
         </div>
         <div class="panel">
           <h2>Materi yang diujikan</h2>
@@ -381,6 +437,7 @@
           <div class="block-row"><span class="bname">Kaidah Pencacahan</span><span class="bdetail">Soal 7–10 · maks 16 poin</span></div>
           <div class="block-row"><span class="bname">Lingkaran</span><span class="bdetail">Soal 11–17 · maks 28 poin</span></div>
           <div class="block-row"><span class="bname">Statistika</span><span class="bdetail">Soal 18–25 · maks 32 poin</span></div>
+          <p style="font-size:13.5px;color:var(--ink-faint);margin:10px 0 0">Keempat blok di atas juga dibahas lengkap dengan rumusnya di Pembahasan Materi.</p>
         </div>
         <div class="panel">
           <h2>Aturan pengerjaan</h2>
@@ -392,7 +449,7 @@
             <li>Setelah menekan Selesai, kamu akan melihat skor total, skor per blok, dan pembahasan setiap soal.</li>
           </ul>
         </div>
-        <button class="btn btn-primary" id="btn-start" type="button">Mulai Ujian</button>
+        <button class="btn btn-primary" id="btn-start" type="button">Mulai Latihan Soal</button>
         <button class="btn btn-ghost" id="btn-materi" type="button" style="width:100%;margin-top:10px">Pembahasan Materi — Rumus &amp; Strategi</button>
       </section>
 
@@ -1254,6 +1311,8 @@
     $("btn-retry").addEventListener("click", startExam);
     $("btn-retry-2").addEventListener("click", startExam);
     $("btn-materi").addEventListener("click", function () { showScreen("materi"); });
+    $("btn-materi-card").addEventListener("click", function () { showScreen("materi"); });
+    $("btn-start-card").addEventListener("click", startExam);
     $("btn-materi-2").addEventListener("click", function () { showScreen("materi"); });
     $("btn-materi-back").addEventListener("click", function () { showScreen("start"); });
     $("btn-materi-back-2").addEventListener("click", function () { showScreen("start"); });
