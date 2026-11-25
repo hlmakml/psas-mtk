@@ -6,6 +6,8 @@ Website simulasi ujian PSAS Ganjil Kelas 12 Matematika.
 - Pilihan ganda, 1 soal isian (No. 9, faktorial), 1 soal MCMA pilih 3 jawaban benar (No. 13, tali busur)
 - Timer 90 menit, navigasi nomor soal, tanda ragu-ragu
 - Skor total (maks 100), skor per blok, dan pembahasan tiap soal
+- Pembahasan Materi: panduan rumus & strategi lengkap (Bab 1 Peluang & Pencacahan, Bab 2 Lingkaran, Bab 3 Statistika, plus 3 contoh hitung cepat), bisa dibuka dari beranda dan dari halaman hasil
+- Tema: putih bersih, indigo (#4338CA) + teal (#0D9488), font Space Grotesk / Inter / JetBrains Mono, sudut tajam
 
 ## Menjalankan lokal
 
