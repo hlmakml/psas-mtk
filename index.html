@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light" />
     <link rel="icon" href="data:," />
     <title>Simulasi Ujian PSAS Ganjil Kelas 12 — Matematika</title>
-    <meta name="description" content="Persiapan PSAS Ganjil Kelas 12 Matematika: pembahasan materi lengkap (3 bab, rumus & trik) plus simulasi latihan 25 soal dengan timer 90 menit dan skor." />
+    <meta name="description" content="Persiapan PSAS Ganjil Kelas 12 Matematika: bank 100 soal latihan, pembahasan materi lengkap (3 bab), simulasi 25 soal acak 90 menit atau latihan semua 100 soal." />
     <meta name="author" content="hima" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -392,12 +392,12 @@
         <div class="start-hero">
           <p class="subject">Matematika · Kelas 12 · PSAS Ganjil</p>
           <h1>Belajar materinya, latih soalnya.</h1>
-          <p class="lead">Satu tempat persiapan PSAS Ganjil Matematika: <strong>pelajari dulu</strong> rumus dan strateginya di Pembahasan Materi, lalu <strong>uji dirimu</strong> lewat simulasi 25 soal yang disusun persis mengikuti 25 indikator resmi — dari peluang sampai statistika.</p>
+          <p class="lead">Satu tempat persiapan PSAS Ganjil Matematika: <strong>pelajari dulu</strong> rumus dan strateginya di Pembahasan Materi, lalu <strong>uji dirimu</strong> lewat simulasi 25 soal acak dari bank 100 soal yang disusun persis mengikuti 25 indikator resmi — dari peluang sampai statistika.</p>
         </div>
         <div class="info-grid">
-          <div class="info-cell"><div class="num">25</div><div class="lbl">Soal</div></div>
-          <div class="info-cell"><div class="num">90</div><div class="lbl">Menit waktu pengerjaan</div></div>
-          <div class="info-cell"><div class="num">100</div><div class="lbl">Skor maksimal</div></div>
+          <div class="info-cell"><div class="num">100</div><div class="lbl">Soal latihan di bank</div></div>
+          <div class="info-cell"><div class="num">25</div><div class="lbl">Soal per simulasi acak</div></div>
+          <div class="info-cell"><div class="num">90</div><div class="lbl">Menit simulasi</div></div>
           <div class="info-cell"><div class="num">3</div><div class="lbl">Bab pembahasan materi</div></div>
         </div>
         <div class="feature-grid">
@@ -418,14 +418,16 @@
             <h3>Latihan Soal — Simulasi Ujian</h3>
             <p>Kerjakan seperti ujian sungguhan: ada batas waktu dan jawaban tidak bisa diubah setelah selesai.</p>
             <ul class="feature-list">
-              <li><strong>25 soal</strong> — 23 PG, 1 isian (No. 9), 1 MCMA pilih 3 (No. 13)</li>
-              <li>Timer <strong>90 menit</strong>, jawaban terkirim otomatis saat habis</li>
+              <li><strong>Bank 100 soal</strong> — 4 varian untuk tiap indikator</li>
+              <li><strong>Simulasi:</strong> 25 soal acak, timer 90 menit · <strong>Semua soal:</strong> 100 soal, timer 360 menit</li>
               <li>Navigasi nomor 1–25 &amp; tanda ragu-ragu</li>
-              <li>Skor total /100, skor per blok, + pembahasan tiap soal</li>
+              <li>Skor total /100 di kedua mode (simulasi 4 poin/soal, semua soal 1 poin/soal), skor per blok, + pembahasan tiap soal</li>
             </ul>
-            <button class="btn btn-primary" id="btn-start-card" type="button">Mulai Latihan Soal</button>
+            <button class="btn btn-primary" id="btn-start-card" type="button">Simulasi 25 Soal (Acak)</button>
+            <button class="btn btn-ghost" id="btn-all-card" type="button" style="margin-top:10px">Latihan Semua 100 Soal</button>
           </article>
         </div>
+        <p style="font-size:13.5px;color:var(--ink-faint);margin:0 0 14px">Mode normal (simulasi): 25 soal dipilih acak, 1 soal dari tiap indikator — porsinya tetap sama seperti ujian (Peluang 6, Pencacahan 4, Lingkaran 7, Statistika 8), jadi tiap kali mengulang, soalnya berbeda tapi komposisinya sama.</p>
         <div class="panel">
           <h2>Cara pakai — 3 langkah</h2>
           <div class="steps">
@@ -446,7 +448,7 @@
           <h2>Aturan pengerjaan</h2>
           <ul class="rules">
             <li>Setiap soal bernilai 4 poin. Tidak ada pengurangan nilai untuk jawaban salah.</li>
-            <li>Timer berjalan 90 menit dan jawaban <strong>terkirim otomatis</strong> saat waktu habis.</li>
+            <li>Timer berjalan 90 menit (simulasi) atau 360 menit (semua soal), dan jawaban <strong>terkirim otomatis</strong> saat waktu habis.</li>
             <li>Soal 9 adalah isian singkat — ketik angkanya saja. Soal 13 adalah pilihan ganda kompleks: pilih <strong>3 jawaban</strong> yang benar.</li>
             <li>Gunakan tombol nomor soal untuk berpindah, dan tandai soal yang ragu-ragu agar mudah kembali lagi.</li>
             <li>Setelah menekan Selesai, kamu akan melihat skor total, skor per blok, dan pembahasan setiap soal.</li>
@@ -866,6 +868,74 @@
     var TABLE_23 = '<table class="data-table"><caption>Nilai ulangan matematika</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
       '<tr><td>30–39</td><td>10</td></tr><tr><td>40–49</td><td>20</td></tr><tr><td>50–59</td><td>20</td></tr><tr><td>60–69</td><td>20</td></tr><tr><td>70–79</td><td>10</td></tr></table>';
 
+
+    var TABLE_18B = '<table class="data-table"><caption>Tinggi badan siswa (cm)</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>40–49</td><td>5</td></tr><tr><td>50–59</td><td>10</td></tr><tr><td>60–69</td><td>10</td></tr><tr><td>70–79</td><td>15</td></tr><tr><td>80–89</td><td>10</td></tr></table>';
+    var TABLE_18C = '<table class="data-table"><caption>Nilai siswa</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>30–39</td><td>4</td></tr><tr><td>40–49</td><td>8</td></tr><tr><td>50–59</td><td>12</td></tr><tr><td>60–69</td><td>10</td></tr><tr><td>70–79</td><td>6</td></tr></table>';
+    var TABLE_18D = '<table class="data-table"><caption>Berat badan siswa (kg)</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>20–29</td><td>6</td></tr><tr><td>30–39</td><td>12</td></tr><tr><td>40–49</td><td>18</td></tr><tr><td>50–59</td><td>14</td></tr><tr><td>60–69</td><td>10</td></tr></table>';
+    var TABLE_19B = '<table class="data-table"><caption>Tinggi badan siswa (cm)</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>20–29</td><td>5</td></tr><tr><td>30–39</td><td>10</td></tr><tr><td>40–49</td><td>11</td></tr><tr><td>50–59</td><td>8</td></tr><tr><td>60–69</td><td>6</td></tr></table>';
+    var TABLE_19C = '<table class="data-table"><caption>Nilai siswa</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>10–19</td><td>8</td></tr><tr><td>20–29</td><td>14</td></tr><tr><td>30–39</td><td>18</td></tr><tr><td>40–49</td><td>12</td></tr><tr><td>50–59</td><td>8</td></tr></table>';
+    var TABLE_23B = '<table class="data-table"><caption>Nilai ulangan matematika</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>30–39</td><td>5</td></tr><tr><td>40–49</td><td>15</td></tr><tr><td>50–59</td><td>20</td></tr><tr><td>60–69</td><td>25</td></tr><tr><td>70–79</td><td>15</td></tr></table>';
+    var TABLE_23C = '<table class="data-table"><caption>Nilai ulangan matematika</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>30–34</td><td>10</td></tr><tr><td>35–39</td><td>20</td></tr><tr><td>40–44</td><td>20</td></tr><tr><td>45–49</td><td>20</td></tr><tr><td>50–54</td><td>10</td></tr></table>';
+    var TABLE_23D = '<table class="data-table"><caption>Nilai ulangan matematika</caption><tr><th>Nilai</th><th>Frekuensi</th></tr>' +
+      '<tr><td>10–19</td><td>10</td></tr><tr><td>20–29</td><td>20</td></tr><tr><td>30–39</td><td>10</td></tr><tr><td>40–49</td><td>10</td></tr><tr><td>50–59</td><td>20</td></tr><tr><td>60–69</td><td>10</td></tr></table>';
+
+    var BARCHART_24B =
+      '<div class="barchart" role="img" aria-label="Diagram batang jumlah siswa per ekstrakurikuler: Futsal 20, Basket 15, Voli 10, Badminton 25">' +
+      '<div class="bar-col"><span class="bar-val">20</span><div class="bar" style="height:80px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">15</span><div class="bar" style="height:60px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">10</span><div class="bar" style="height:40px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">25</span><div class="bar" style="height:100px"></div></div></div>' +
+      '<div class="bar-labels"><span>Futsal</span><span>Basket</span><span>Voli</span><span>Badminton</span></div>';
+    var BARCHART_24C =
+      '<div class="barchart" role="img" aria-label="Diagram batang jumlah siswa per kegiatan: Pramuka 18, PMR 12, Seni 24, Olahraga 30">' +
+      '<div class="bar-col"><span class="bar-val">18</span><div class="bar" style="height:72px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">12</span><div class="bar" style="height:48px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">24</span><div class="bar" style="height:96px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">30</span><div class="bar" style="height:120px"></div></div></div>' +
+      '<div class="bar-labels"><span>Pramuka</span><span>PMR</span><span>Seni</span><span>Olahraga</span></div>';
+    var BARCHART_24D =
+      '<div class="barchart" role="img" aria-label="Diagram batang jumlah siswa per ekstrakurikuler: Futsal 28, Basket 20, Voli 12, Badminton 16">' +
+      '<div class="bar-col"><span class="bar-val">28</span><div class="bar" style="height:112px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">20</span><div class="bar" style="height:80px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">12</span><div class="bar" style="height:48px"></div></div>' +
+      '<div class="bar-col"><span class="bar-val">16</span><div class="bar" style="height:64px"></div></div></div>' +
+      '<div class="bar-labels"><span>Futsal</span><span>Basket</span><span>Voli</span><span>Badminton</span></div>';
+
+    var PIE_25B =
+      '<div class="pie-wrap"><div class="pie" style="background:conic-gradient(#4338CA 0% 25%, #0D9488 25% 45%, #475569 45% 75%, #94A3B8 75% 90%, #CBD5E1 90% 100%)" role="img" aria-label="Diagram lingkaran hobi siswa: Sepak Bola 25 persen, Musik 20 persen, Membaca 30 persen, Melukis 15 persen, Lainnya 10 persen"></div>' +
+      '<ul class="pie-legend">' +
+      '<li><span class="dot" style="background:#4338CA"></span>Sepak Bola — 25%</li>' +
+      '<li><span class="dot" style="background:#0D9488"></span>Musik — 20%</li>' +
+      '<li><span class="dot" style="background:#475569"></span>Membaca — 30%</li>' +
+      '<li><span class="dot" style="background:#94A3B8"></span>Melukis — 15%</li>' +
+      '<li><span class="dot" style="background:#CBD5E1"></span>Lainnya — 10%</li>' +
+      '</ul></div>';
+    var PIE_25C =
+      '<div class="pie-wrap"><div class="pie" style="background:conic-gradient(#4338CA 0% 20%, #0D9488 20% 45%, #475569 45% 70%, #94A3B8 70% 90%, #CBD5E1 90% 100%)" role="img" aria-label="Diagram lingkaran hobi siswa: Sepak Bola 20 persen, Musik 25 persen, Membaca 25 persen, Melukis 20 persen, Lainnya 10 persen"></div>' +
+      '<ul class="pie-legend">' +
+      '<li><span class="dot" style="background:#4338CA"></span>Sepak Bola — 20%</li>' +
+      '<li><span class="dot" style="background:#0D9488"></span>Musik — 25%</li>' +
+      '<li><span class="dot" style="background:#475569"></span>Membaca — 25%</li>' +
+      '<li><span class="dot" style="background:#94A3B8"></span>Melukis — 20%</li>' +
+      '<li><span class="dot" style="background:#CBD5E1"></span>Lainnya — 10%</li>' +
+      '</ul></div>';
+    var PIE_25D =
+      '<div class="pie-wrap"><div class="pie" style="background:conic-gradient(#4338CA 0% 30%, #0D9488 30% 50%, #475569 50% 75%, #94A3B8 75% 90%, #CBD5E1 90% 100%)" role="img" aria-label="Diagram lingkaran hobi siswa: Sepak Bola 30 persen, Musik 20 persen, Membaca 25 persen, Melukis 15 persen, Lainnya 10 persen"></div>' +
+      '<ul class="pie-legend">' +
+      '<li><span class="dot" style="background:#4338CA"></span>Sepak Bola — 30%</li>' +
+      '<li><span class="dot" style="background:#0D9488"></span>Musik — 20%</li>' +
+      '<li><span class="dot" style="background:#475569"></span>Membaca — 25%</li>' +
+      '<li><span class="dot" style="background:#94A3B8"></span>Melukis — 15%</li>' +
+      '<li><span class="dot" style="background:#CBD5E1"></span>Lainnya — 10%</li>' +
+      '</ul></div>';
+
     var BARCHART_24 =
       '<div class="barchart" role="img" aria-label="Diagram batang jumlah siswa per ekstrakurikuler: Futsal 32, Basket 24, Voli 16, Badminton 28">' +
       '<div class="bar-col"><span class="bar-val">32</span><div class="bar" style="height:128px"></div></div>' +
@@ -884,7 +954,7 @@
       '<li><span class="dot" style="background:#CBD5E1"></span>Lainnya — 10%</li>' +
       '</ul></div>';
 
-    var QUESTIONS = [
+    var QUESTION_BANK = [
       { block: "peluang", type: "pg", indicator: "Frekuensi harapan",
         stem: "<p>Sebuah dadu bersisi enam dilempar sebanyak 180 kali. Frekuensi harapan munculnya mata dadu prima adalah … kali.</p>",
         options: ["30", "60", "90", "120", "150"], answer: 2,
@@ -990,8 +1060,113 @@
       { block: "statistika", type: "pg", indicator: "Interpretasi diagram lingkaran",
         stem: "<p>Diagram lingkaran berikut menunjukkan hobi 400 siswa di suatu sekolah.</p>" + PIE_25 + "<p>Banyaknya siswa yang mempunyai hobi musik adalah … siswa.</p>",
         options: ["80", "100", "120", "140", "160"], answer: 2,
-        explain: "Bagian musik pada diagram lingkaran adalah 30%. Banyak siswa = 30/100 × 400 = 120 siswa." }
+        explain: "Bagian musik pada diagram lingkaran adalah 30%. Banyak siswa = 30/100 × 400 = 120 siswa." },
+      {"block": "peluang", "type": "pg", "indicator": "Frekuensi harapan", "stem": "<p>Sebuah dadu bersisi enam dilempar sebanyak 120 kali. Frekuensi harapan munculnya mata dadu genap adalah … kali.</p>", "options": ["30", "60", "90", "120", "150"], "answer": 1, "explain": "Mata dadu genap adalah 2, 4, dan 6, sehingga P(genap) = 3/6 = 1/2. Frekuensi harapan = 1/2 × 120 = 60 kali."},
+      {"block": "peluang", "type": "pg", "indicator": "Frekuensi harapan", "stem": "<p>Sekeping uang logam dilempar sebanyak 200 kali. Frekuensi harapan munculnya sisi gambar adalah … kali.</p>", "options": ["50", "75", "100", "125", "150"], "answer": 2, "explain": "P(gambar) = 1/2. Frekuensi harapan = 1/2 × 200 = 100 kali."},
+      {"block": "peluang", "type": "pg", "indicator": "Frekuensi harapan", "stem": "<p>Sebuah dadu bersisi enam dilempar sebanyak 240 kali. Frekuensi harapan munculnya mata dadu lebih dari 4 adalah … kali.</p>", "options": ["40", "80", "120", "160", "200"], "answer": 1, "explain": "Mata dadu lebih dari 4 adalah 5 dan 6, sehingga P = 2/6 = 1/3. Frekuensi harapan = 1/3 × 240 = 80 kali."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang dua kejadian saling bebas", "stem": "<p>Sekeping uang logam dan sebuah dadu dilempar bersama-sama satu kali. Peluang muncul sisi angka pada uang logam dan mata genap pada dadu adalah …</p>", "options": ["1/2", "1/4", "1/6", "1/8", "3/4"], "answer": 1, "explain": "Kedua kejadian saling bebas: P = P(angka) × P(genap) = 1/2 × 1/2 = 1/4."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang dua kejadian saling bebas", "stem": "<p>Dua keping uang logam dilempar bersama-sama satu kali. Peluang muncul sisi angka pada kedua uang logam adalah …</p>", "options": ["1/2", "1/3", "1/4", "1/8", "2/3"], "answer": 2, "explain": "Kedua kejadian saling bebas: P = 1/2 × 1/2 = 1/4."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang dua kejadian saling bebas", "stem": "<p>Sebuah dadu dan sekeping uang logam dilempar bersama-sama satu kali. Peluang muncul mata prima pada dadu dan sisi gambar pada uang logam adalah …</p>", "options": ["1/3", "1/4", "1/6", "1/2", "5/12"], "answer": 1, "explain": "P(prima) = 3/6 = 1/2 dan P(gambar) = 1/2, sehingga P = 1/2 × 1/2 = 1/4."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang dua kejadian tidak saling lepas", "stem": "<p>Dari satu set kartu bridge (52 kartu) diambil satu kartu secara acak. Peluang terambil kartu As atau kartu hitam adalah …</p>", "options": ["7/13", "5/13", "3/13", "15/26", "1/2"], "answer": 0, "explain": "P(As ∪ hitam) = 4/52 + 26/52 − 2/52 = 28/52 = 7/13 (ada 2 kartu As hitam)."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang dua kejadian tidak saling lepas", "stem": "<p>Sebuah dadu dilempar satu kali. Peluang muncul mata genap atau mata lebih dari 4 adalah …</p>", "options": ["1/2", "2/3", "5/6", "1/3", "1/6"], "answer": 1, "explain": "P(genap ∪ >4) = 3/6 + 2/6 − 1/6 = 4/6 = 2/3 (irisannya mata 6)."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang dua kejadian tidak saling lepas", "stem": "<p>Dari satu set kartu bridge (52 kartu) diambil satu kartu secara acak. Peluang terambil kartu merah atau kartu King adalah …</p>", "options": ["4/13", "7/13", "1/2", "15/52", "9/26"], "answer": 1, "explain": "P(merah ∪ King) = 26/52 + 4/52 − 2/52 = 28/52 = 7/13 (ada 2 King merah)."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang kejadian bersyarat", "stem": "<p>Sebuah kotak berisi 4 bola merah dan 6 bola putih. Pada pengambilan pertama terambil satu bola merah dan bola tersebut tidak dikembalikan. Peluang pada pengambilan kedua terambil bola merah lagi adalah …</p>", "options": ["1/3", "2/5", "3/10", "1/2", "4/9"], "answer": 0, "explain": "Setelah satu bola merah terambil, sisa bola ada 9 dengan 3 bola merah. Jadi peluangnya = 3/9 = 1/3."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang kejadian bersyarat", "stem": "<p>Sebuah dadu dilempar satu kali. Diketahui mata yang muncul adalah bilangan genap. Peluang mata yang muncul adalah 4 adalah …</p>", "options": ["1/6", "1/3", "1/2", "2/3", "1/4"], "answer": 1, "explain": "Mata genap yang mungkin adalah {2, 4, 6}, hanya satu yang bernilai 4, sehingga peluangnya = 1/3."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang kejadian bersyarat", "stem": "<p>Sebuah kotak berisi 5 bola hitam dan 3 bola putih. Pada pengambilan pertama terambil satu bola putih dan bola tersebut tidak dikembalikan. Peluang pada pengambilan kedua terambil bola hitam adalah …</p>", "options": ["5/8", "5/7", "3/7", "1/2", "2/3"], "answer": 1, "explain": "Setelah satu bola putih terambil, sisa bola ada 7 dengan 5 bola hitam. Jadi peluangnya = 5/7."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang suatu kejadian dalam kehidupan sehari-hari", "stem": "<p>Dalam sebuah kantong terdapat 3 kelereng merah, 5 kelereng hijau, dan 2 kelereng biru. Jika diambil satu kelereng secara acak, peluang terambil kelereng hijau adalah …</p>", "options": ["1/5", "3/10", "1/2", "2/5", "3/5"], "answer": 2, "explain": "Total kelereng = 3 + 5 + 2 = 10. P(hijau) = 5/10 = 1/2."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang suatu kejadian dalam kehidupan sehari-hari", "stem": "<p>Dalam sebuah kotak terdapat 8 bola: 2 bola merah, 3 bola kuning, dan 3 bola biru. Jika diambil satu bola secara acak, peluang terambil bola kuning adalah …</p>", "options": ["1/4", "3/8", "1/2", "5/8", "1/3"], "answer": 1, "explain": "P(kuning) = 3/8."},
+      {"block": "peluang", "type": "pg", "indicator": "Peluang suatu kejadian dalam kehidupan sehari-hari", "stem": "<p>Dalam sebuah kelas terdapat 30 siswa, 12 di antaranya laki-laki. Jika dipilih satu siswa secara acak, peluang terpilih siswa perempuan adalah …</p>", "options": ["2/5", "3/5", "1/2", "2/3", "1/3"], "answer": 1, "explain": "Siswa perempuan ada 30 − 12 = 18 orang. P(perempuan) = 18/30 = 3/5."},
+      {"block": "peluang", "type": "pg", "indicator": "Banyaknya anggota ruang sampel", "stem": "<p>Dua buah dadu dilempar bersama-sama satu kali. Banyaknya anggota ruang sampel percobaan tersebut adalah …</p>", "options": ["18", "36", "12", "24", "6"], "answer": 1, "explain": "Setiap dadu mempunyai 6 kemungkinan hasil, sehingga n(S) = 6 × 6 = 36."},
+      {"block": "peluang", "type": "pg", "indicator": "Banyaknya anggota ruang sampel", "stem": "<p>Empat keping uang logam dilempar bersama-sama satu kali. Banyaknya anggota ruang sampel percobaan tersebut adalah …</p>", "options": ["4", "8", "12", "16", "32"], "answer": 3, "explain": "Setiap keping uang logam mempunyai 2 kemungkinan hasil, sehingga n(S) = 2⁴ = 16."},
+      {"block": "peluang", "type": "pg", "indicator": "Banyaknya anggota ruang sampel", "stem": "<p>Sebuah dadu dan dua keping uang logam dilempar bersama-sama satu kali. Banyaknya anggota ruang sampel percobaan tersebut adalah …</p>", "options": ["24", "12", "36", "8", "48"], "answer": 0, "explain": "n(S) = 6 × 2 × 2 = 24."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Kaidah penjumlahan (kontekstual)", "stem": "<p>Di sebuah rak terdapat 6 novel dan 5 komik. Seseorang akan meminjam tepat satu buku dari rak tersebut. Banyaknya cara memilih buku adalah … cara.</p>", "options": ["9", "10", "11", "30", "6"], "answer": 2, "explain": "Pemilihan dilakukan dari novel <em>atau</em> komik, sehingga berlaku kaidah penjumlahan: 6 + 5 = 11 cara."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Kaidah penjumlahan (kontekstual)", "stem": "<p>Sebuah kantin menyediakan 4 jenis makanan dan 3 jenis minuman. Seseorang akan membeli tepat satu jenis makanan atau satu jenis minuman. Banyaknya pilihan yang mungkin adalah …</p>", "options": ["12", "7", "4", "3", "1"], "answer": 1, "explain": "Kaidah penjumlahan: 4 + 3 = 7 pilihan."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Kaidah penjumlahan (kontekstual)", "stem": "<p>Calon ketua kelas berasal dari dua kelompok. Kelompok pertama mengajukan 8 kandidat dan kelompok kedua mengajukan 6 kandidat. Ketua kelas dipilih dari salah satu kelompok tersebut. Banyaknya cara memilih ketua kelas adalah … cara.</p>", "options": ["48", "14", "8", "6", "2"], "answer": 1, "explain": "Kaidah penjumlahan: 8 + 6 = 14 cara."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Bilangan dengan angka tidak boleh berulang", "stem": "<p>Dari angka-angka 1, 2, 3, 4, 5, dan 6 akan dibentuk bilangan yang terdiri dari dua angka berbeda. Banyaknya bilangan yang dapat dibentuk adalah …</p>", "options": ["12", "30", "36", "60", "15"], "answer": 1, "explain": "Dengan aturan pengisian tempat: puluhan 6 pilihan, satuan 5 pilihan. Total = 6 × 5 = 30 bilangan."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Bilangan dengan angka tidak boleh berulang", "stem": "<p>Dari angka-angka 1, 2, 3, 4, 5, dan 6 akan dibentuk bilangan yang terdiri dari tiga angka berbeda. Banyaknya bilangan yang dapat dibentuk adalah …</p>", "options": ["60", "90", "120", "216", "150"], "answer": 2, "explain": "Angka tidak boleh berulang: 6 × 5 × 4 = 120 bilangan."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Bilangan dengan angka tidak boleh berulang", "stem": "<p>Dari angka-angka 1, 2, 3, 4, 5, 6, dan 7 akan dibentuk bilangan yang terdiri dari empat angka berbeda. Banyaknya bilangan yang dapat dibentuk adalah …</p>", "options": ["210", "420", "840", "240", "1680"], "answer": 2, "explain": "Angka tidak boleh berulang: 7 × 6 × 5 × 4 = 840 bilangan."},
+      {"block": "pencacahan", "type": "isian", "indicator": "Menghitung nilai faktorial", "stem": "<p class=\"instruction\">Isian singkat — ketik angkanya saja.</p><p>Nilai dari 5! ⁄ 2! adalah …</p>", "answer": "60", "explain": "5! ⁄ 2! = (5 × 4 × 3 × 2!) ⁄ 2! = 5 × 4 × 3 = 60."},
+      {"block": "pencacahan", "type": "isian", "indicator": "Menghitung nilai faktorial", "stem": "<p class=\"instruction\">Isian singkat — ketik angkanya saja.</p><p>Nilai dari 7! ⁄ 5! adalah …</p>", "answer": "42", "explain": "7! ⁄ 5! = 7 × 6 = 42."},
+      {"block": "pencacahan", "type": "isian", "indicator": "Menghitung nilai faktorial", "stem": "<p class=\"instruction\">Isian singkat — ketik angkanya saja.</p><p>Nilai dari 8! ⁄ 6! adalah …</p>", "answer": "56", "explain": "8! ⁄ 6! = 8 × 7 = 56."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Permutasi dalam kehidupan sehari-hari", "stem": "<p>Dari 8 orang siswa akan dipilih seorang ketua dan seorang wakil ketua. Banyaknya susunan yang mungkin adalah …</p>", "options": ["28", "56", "64", "16", "112"], "answer": 1, "explain": "Jabatan berbeda berarti urutan diperhatikan: P(8,2) = 8 × 7 = 56 susunan."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Permutasi dalam kehidupan sehari-hari", "stem": "<p>Dari 6 buku yang berbeda akan disusun 3 buku di sebuah rak (urutan diperhatikan). Banyaknya susunan yang mungkin adalah …</p>", "options": ["20", "60", "120", "216", "360"], "answer": 2, "explain": "P(6,3) = 6 × 5 × 4 = 120 susunan."},
+      {"block": "pencacahan", "type": "pg", "indicator": "Permutasi dalam kehidupan sehari-hari", "stem": "<p>Dari 10 orang siswa akan ditentukan juara 1, juara 2, dan juara 3 lomba. Banyaknya susunan juara yang mungkin adalah …</p>", "options": ["120", "360", "720", "1000", "5040"], "answer": 2, "explain": "P(10,3) = 10 × 9 × 8 = 720 susunan."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Jari-jari lingkaran dari luas tembereng", "stem": "<p>Pada sebuah lingkaran, besar sudut pusat adalah 90° dan luas temberengnya 14 cm². Jika π = 22/7, panjang jari-jari lingkaran tersebut adalah … cm.</p>", "options": ["7", "14", "21", "28", "3,5"], "answer": 0, "explain": "Luas tembereng = (2/7)r². Maka (2/7)r² = 14 → r² = 49 → r = 7 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Jari-jari lingkaran dari luas tembereng", "stem": "<p>Pada sebuah lingkaran, besar sudut pusat adalah 90° dan luas temberengnya 126 cm². Jika π = 22/7, panjang jari-jari lingkaran tersebut adalah … cm.</p>", "options": ["14", "21", "28", "35", "42"], "answer": 1, "explain": "Luas tembereng = (2/7)r². Maka (2/7)r² = 126 → r² = 441 → r = 21 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Jari-jari lingkaran dari luas tembereng", "stem": "<p>Pada sebuah lingkaran, besar sudut pusat adalah 90° dan luas temberengnya 224 cm². Jika π = 22/7, panjang jari-jari lingkaran tersebut adalah … cm.</p>", "options": ["14", "21", "28", "35", "42"], "answer": 2, "explain": "Luas tembereng = (2/7)r². Maka (2/7)r² = 224 → r² = 784 → r = 28 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Panjang apotema", "stem": "<p>Sebuah lingkaran berjari-jari 12 cm mempunyai tali busur yang menghadap sudut pusat 60°. Panjang apotema tali busur tersebut adalah … cm.</p>", "options": ["6", "12", "6√3", "12√3", "3"], "answer": 2, "explain": "Apotema = r cos(α/2) = 12 × cos 30° = 12 × (√3/2) = 6√3 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Panjang apotema", "stem": "<p>Sebuah lingkaran berjari-jari 8 cm mempunyai tali busur yang menghadap sudut pusat 90°. Panjang apotema tali busur tersebut adalah … cm.</p>", "options": ["4√2", "4", "8", "2√2", "8√2"], "answer": 0, "explain": "Apotema = r cos(α/2) = 8 × cos 45° = 8 × (√2/2) = 4√2 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Panjang apotema", "stem": "<p>Sebuah lingkaran berjari-jari 20 cm mempunyai tali busur yang menghadap sudut pusat 120°. Panjang apotema tali busur tersebut adalah … cm.</p>", "options": ["5", "10", "10√3", "20", "5√3"], "answer": 1, "explain": "Apotema = r cos(α/2) = 20 × cos 60° = 20 × 1/2 = 10 cm."},
+      {"block": "lingkaran", "type": "mcma", "indicator": "Panjang tali busur (pilih 3 jawaban benar)", "stem": "<p>Sebuah lingkaran berjari-jari 6 cm mempunyai tali busur yang menghadap sudut pusat 60°. Pernyataan yang benar tentang tali busur tersebut adalah … <span class=\"instruction\">(Pilih 3 jawaban yang benar.)</span></p>", "options": ["Panjang tali busur adalah 6 cm", "Setengah panjang tali busur adalah 3 cm", "Panjang tali busur adalah 12 cm", "Panjang tali busur sama dengan jari-jari lingkaran", "Panjang tali busur adalah 6√3 cm"], "answer": [0, 1, 3], "explain": "Tali busur = 2r sin(α/2) = 2 × 6 × sin 30° = 6 cm. Setengahnya 3 cm, dan panjangnya sama dengan jari-jari (r = 6 cm)."},
+      {"block": "lingkaran", "type": "mcma", "indicator": "Panjang tali busur (pilih 3 jawaban benar)", "stem": "<p>Sebuah lingkaran berjari-jari 12 cm mempunyai tali busur yang menghadap sudut pusat 90°. Pernyataan yang benar tentang tali busur tersebut adalah … <span class=\"instruction\">(Pilih 3 jawaban yang benar.)</span></p>", "options": ["Panjang tali busur adalah 12 cm", "Panjang tali busur adalah 12√2 cm", "Panjang tali busur adalah 24 cm", "Setengah panjang tali busur adalah 6√2 cm", "Panjang tali busur kira-kira 16,97 cm"], "answer": [1, 3, 4], "explain": "Tali busur = 2r sin(α/2) = 2 × 12 × sin 45° = 12√2 cm ≈ 16,97 cm. Setengahnya adalah 6√2 cm."},
+      {"block": "lingkaran", "type": "mcma", "indicator": "Panjang tali busur (pilih 3 jawaban benar)", "stem": "<p>Sebuah lingkaran berjari-jari 8 cm mempunyai tali busur yang menghadap sudut pusat 120°. Pernyataan yang benar tentang tali busur tersebut adalah … <span class=\"instruction\">(Pilih 3 jawaban yang benar.)</span></p>", "options": ["Panjang tali busur adalah 8√3 cm", "Panjang tali busur adalah 8 cm", "Setengah panjang tali busur adalah 4√3 cm", "Panjang tali busur adalah 16 cm", "Panjang tali busur kira-kira 13,86 cm"], "answer": [0, 2, 4], "explain": "Tali busur = 2r sin(α/2) = 2 × 8 × sin 60° = 8√3 cm ≈ 13,86 cm. Setengahnya adalah 4√3 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Garis singgung persekutuan luar dua lingkaran", "stem": "<p>Dua lingkaran berpusat di P dan Q. Lingkaran pertama berjari-jari 12 cm dan lingkaran kedua berjari-jari 4 cm. Jarak kedua pusat PQ = 17 cm. Jika A titik singgung pada lingkaran pertama dan B titik singgung pada lingkaran kedua, panjang AB (garis singgung persekutuan luar) adalah … cm.</p>", "options": ["12", "15", "17", "20", "9"], "answer": 1, "explain": "Garis singgung persekutuan luar: AB² = PQ² − (R − r)² = 17² − (12 − 4)² = 289 − 64 = 225, sehingga AB = 15 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Garis singgung persekutuan luar dua lingkaran", "stem": "<p>Dua lingkaran berpusat di P dan Q. Lingkaran pertama berjari-jari 10 cm dan lingkaran kedua berjari-jari 4 cm. Jarak kedua pusat PQ = 10 cm. Jika A titik singgung pada lingkaran pertama dan B titik singgung pada lingkaran kedua, panjang AB (garis singgung persekutuan luar) adalah … cm.</p>", "options": ["10", "6", "8", "12", "14"], "answer": 2, "explain": "Garis singgung persekutuan luar: AB² = PQ² − (R − r)² = 10² − (10 − 4)² = 100 − 36 = 64, sehingga AB = 8 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Garis singgung persekutuan luar dua lingkaran", "stem": "<p>Dua lingkaran berpusat di P dan Q. Lingkaran pertama berjari-jari 13 cm dan lingkaran kedua berjari-jari 4 cm. Jarak kedua pusat PQ = 15 cm. Jika A titik singgung pada lingkaran pertama dan B titik singgung pada lingkaran kedua, panjang AB (garis singgung persekutuan luar) adalah … cm.</p>", "options": ["9", "12", "15", "18", "20"], "answer": 1, "explain": "Garis singgung persekutuan luar: AB² = PQ² − (R − r)² = 15² − (13 − 4)² = 225 − 81 = 144, sehingga AB = 12 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Jarak kedua pusat dari garis singgung persekutuan luar", "stem": "<p>Dua buah lingkaran masing-masing berjari-jari 11 cm dan 5 cm. Panjang garis singgung persekutuan luar kedua lingkaran adalah 8 cm. Jarak kedua pusat lingkaran tersebut adalah … cm.</p>", "options": ["8", "12", "10", "14", "6"], "answer": 2, "explain": "d² = l² + (R − r)² = 8² + (11 − 5)² = 64 + 36 = 100, sehingga jarak kedua pusat d = 10 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Jarak kedua pusat dari garis singgung persekutuan luar", "stem": "<p>Dua buah lingkaran masing-masing berjari-jari 14 cm dan 6 cm. Panjang garis singgung persekutuan luar kedua lingkaran adalah 15 cm. Jarak kedua pusat lingkaran tersebut adalah … cm.</p>", "options": ["17", "15", "20", "13", "25"], "answer": 0, "explain": "d² = l² + (R − r)² = 15² + (14 − 6)² = 225 + 64 = 289, sehingga jarak kedua pusat d = 17 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Jarak kedua pusat dari garis singgung persekutuan luar", "stem": "<p>Dua buah lingkaran masing-masing berjari-jari 16 cm dan 4 cm. Panjang garis singgung persekutuan luar kedua lingkaran adalah 9 cm. Jarak kedua pusat lingkaran tersebut adalah … cm.</p>", "options": ["12", "15", "18", "9", "20"], "answer": 1, "explain": "d² = l² + (R − r)² = 9² + (16 − 4)² = 81 + 144 = 225, sehingga jarak kedua pusat d = 15 cm."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Sudut keliling dan sudut pusat", "stem": "<p>Pada sebuah lingkaran, sudut pusat AOB besarnya 100° dan menghadap busur AB. Sudut keliling ACB juga menghadap busur AB. Besar sudut keliling ACB adalah …</p>", "options": ["25°", "100°", "200°", "50°", "80°"], "answer": 3, "explain": "Sudut keliling yang menghadap busur yang sama besarnya setengah sudut pusat: 1/2 × 100° = 50°."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Sudut keliling dan sudut pusat", "stem": "<p>Pada sebuah lingkaran, sudut keliling ACB besarnya 35° dan menghadap busur AB. Sudut pusat AOB juga menghadap busur AB. Besar sudut pusat AOB adalah …</p>", "options": ["35°", "70°", "17,5°", "105°", "140°"], "answer": 1, "explain": "Sudut pusat yang menghadap busur yang sama besarnya dua kali sudut keliling: 2 × 35° = 70°."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Sudut keliling dan sudut pusat", "stem": "<p>Sebuah sudut keliling menghadap diameter lingkaran. Besar sudut keliling tersebut adalah …</p>", "options": ["90°", "45°", "180°", "60°", "120°"], "answer": 0, "explain": "Sudut keliling yang menghadap diameter selalu 90°."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Sudut di dalam lingkaran (segi empat tali busur)", "stem": "<p>Segi empat ABCD adalah segi empat tali busur. Jika besar ∠A = 100°, besar ∠C adalah …</p>", "options": ["80°", "100°", "90°", "70°", "110°"], "answer": 0, "explain": "Pada segi empat tali busur, sudut-sudut yang berhadapan jumlahnya 180°. ∠A berhadapan dengan ∠C, jadi ∠C = 180° − 100° = 80°."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Sudut di dalam lingkaran (segi empat tali busur)", "stem": "<p>Segi empat ABCD adalah segi empat tali busur. Jika besar ∠B = 70°, besar ∠D adalah …</p>", "options": ["70°", "110°", "90°", "180°", "80°"], "answer": 1, "explain": "Pada segi empat tali busur, sudut-sudut yang berhadapan jumlahnya 180°. ∠B berhadapan dengan ∠D, jadi ∠D = 180° − 70° = 110°."},
+      {"block": "lingkaran", "type": "pg", "indicator": "Sudut di dalam lingkaran (segi empat tali busur)", "stem": "<p>Segi empat ABCD adalah segi empat tali busur. Jika besar ∠A = 125° dan ∠D = 95°, besar ∠B adalah …</p>", "options": ["85°", "95°", "125°", "55°", "105°"], "answer": 0, "explain": "∠B berhadapan dengan ∠D, jadi ∠B = 180° − 95° = 85°."},
+      {"block": "statistika", "type": "pg", "indicator": "Desil data berkelompok", "stem": "<p>Data tinggi badan 50 siswa disajikan pada tabel berikut.</p>" + TABLE_18B + "<p>Desil ke-4 (D<sub>4</sub>) dari data tersebut adalah …</p>", "options": ["62,5", "64,5", "65,5", "66,5", "63,5"], "answer": 1, "explain": "Letak D₄ = 4/10 × 50 = data ke-20, terletak pada kelas 60–69 (Tb = 59,5; F = 15; f = 10; p = 10). D₄ = 59,5 + 10 × ((20 − 15)/10) = 64,5."},
+      {"block": "statistika", "type": "pg", "indicator": "Desil data berkelompok", "stem": "<p>Data nilai 40 siswa disajikan pada tabel berikut.</p>" + TABLE_18C + "<p>Desil ke-6 (D<sub>6</sub>) dari data tersebut adalah …</p>", "options": ["57,5", "58,5", "59,5", "60,5", "61,5"], "answer": 2, "explain": "Letak D₆ = 6/10 × 40 = data ke-24, terletak pada kelas 50–59 (Tb = 49,5; F = 12; f = 12; p = 10). D₆ = 49,5 + 10 × ((24 − 12)/12) = 59,5."},
+      {"block": "statistika", "type": "pg", "indicator": "Desil data berkelompok", "stem": "<p>Data berat badan 60 siswa disajikan pada tabel berikut.</p>" + TABLE_18D + "<p>Desil ke-2 (D<sub>2</sub>) dari data tersebut adalah …</p>", "options": ["32,5", "34,5", "35,5", "36,5", "33,5"], "answer": 1, "explain": "Letak D₂ = 2/10 × 60 = data ke-12, terletak pada kelas 30–39 (Tb = 29,5; F = 6; f = 12; p = 10). D₂ = 29,5 + 10 × ((12 − 6)/12) = 34,5."},
+      {"block": "statistika", "type": "pg", "indicator": "Kuartil data berkelompok", "stem": "<p>Data berat badan 48 siswa disajikan pada tabel berikut.</p>" + TABLE_19 + "<p>Kuartil ketiga (Q<sub>3</sub>) dari data tersebut adalah …</p>", "options": ["62,5", "64,5", "65,5", "66,5", "63,5"], "answer": 1, "explain": "Letak Q₃ = 3/4 × 48 = data ke-36, terletak pada kelas 61–70 (Tb = 60,5; F = 32; f = 10; p = 10). Q₃ = 60,5 + 10 × ((36 − 32)/10) = 64,5."},
+      {"block": "statistika", "type": "pg", "indicator": "Kuartil data berkelompok", "stem": "<p>Data tinggi badan 40 siswa disajikan pada tabel berikut.</p>" + TABLE_19B + "<p>Kuartil pertama (Q<sub>1</sub>) dari data tersebut adalah …</p>", "options": ["32,5", "33,5", "34,5", "35,5", "36,5"], "answer": 2, "explain": "Letak Q₁ = 1/4 × 40 = data ke-10, terletak pada kelas 30–39 (Tb = 29,5; F = 5; f = 10; p = 10). Q₁ = 29,5 + 10 × ((10 − 5)/10) = 34,5."},
+      {"block": "statistika", "type": "pg", "indicator": "Kuartil data berkelompok", "stem": "<p>Data nilai 60 siswa disajikan pada tabel berikut.</p>" + TABLE_19C + "<p>Kuartil pertama (Q<sub>1</sub>) dari data tersebut adalah …</p>", "options": ["22,5", "23,5", "24,5", "25,5", "26,5"], "answer": 2, "explain": "Letak Q₁ = 1/4 × 60 = data ke-15, terletak pada kelas 20–29 (Tb = 19,5; F = 8; f = 14; p = 10). Q₁ = 19,5 + 10 × ((15 − 8)/14) = 24,5."},
+      {"block": "statistika", "type": "pg", "indicator": "Ragam suatu data", "stem": "<p>Ragam (varians) dari data 2, 4, 6, 8, 10 adalah …</p>", "options": ["8", "4", "6", "10", "12"], "answer": 0, "explain": "Rata-rata x̄ = 6. Ragam = ((2−6)² + (4−6)² + (6−6)² + (8−6)² + (10−6)²)/5 = (16 + 4 + 0 + 4 + 16)/5 = 8."},
+      {"block": "statistika", "type": "pg", "indicator": "Ragam suatu data", "stem": "<p>Ragam (varians) dari data 3, 5, 7, 9 adalah …</p>", "options": ["3", "5", "4", "6", "7"], "answer": 1, "explain": "Rata-rata x̄ = 6. Ragam = ((3−6)² + (5−6)² + (7−6)² + (9−6)²)/4 = (9 + 1 + 1 + 9)/4 = 5."},
+      {"block": "statistika", "type": "pg", "indicator": "Ragam suatu data", "stem": "<p>Ragam (varians) dari data 5, 7, 9, 11, 13 adalah …</p>", "options": ["5", "6", "8", "10", "4"], "answer": 2, "explain": "Rata-rata x̄ = 9. Ragam = ((5−9)² + (7−9)² + (9−9)² + (11−9)² + (13−9)²)/5 = (16 + 4 + 0 + 4 + 16)/5 = 8."},
+      {"block": "statistika", "type": "pg", "indicator": "Varians data tunggal", "stem": "<p>Varians dari data tunggal 1, 3, 5, 7, 9 adalah …</p>", "options": ["4", "8", "6", "10", "12"], "answer": 1, "explain": "Rata-rata x̄ = 5. Varians = ((1−5)² + (3−5)² + (5−5)² + (7−5)² + (9−5)²)/5 = (16 + 4 + 0 + 4 + 16)/5 = 8."},
+      {"block": "statistika", "type": "pg", "indicator": "Varians data tunggal", "stem": "<p>Varians dari data tunggal 6, 8, 10, 12 adalah …</p>", "options": ["5", "3", "4", "6", "7"], "answer": 0, "explain": "Rata-rata x̄ = 9. Varians = ((6−9)² + (8−9)² + (10−9)² + (12−9)²)/4 = (9 + 1 + 1 + 9)/4 = 5."},
+      {"block": "statistika", "type": "pg", "indicator": "Varians data tunggal", "stem": "<p>Varians dari data tunggal 10, 12, 14, 16, 18 adalah …</p>", "options": ["5", "6", "7", "8", "9"], "answer": 3, "explain": "Rata-rata x̄ = 14. Varians = ((10−14)² + (12−14)² + (14−14)² + (16−14)² + (18−14)²)/5 = (16 + 4 + 0 + 4 + 16)/5 = 8."},
+      {"block": "statistika", "type": "pg", "indicator": "Simpangan baku data tunggal", "stem": "<p>Simpangan baku dari data tunggal 4, 6, 8, 10 adalah …</p>", "options": ["√3", "√5", "√7", "2", "5"], "answer": 1, "explain": "Rata-rata x̄ = 7. Varians = ((4−7)² + (6−7)² + (8−7)² + (10−7)²)/4 = (9 + 1 + 1 + 9)/4 = 5. Simpangan baku = √5."},
+      {"block": "statistika", "type": "pg", "indicator": "Simpangan baku data tunggal", "stem": "<p>Simpangan baku dari data tunggal 6, 8, 10, 12, 14 adalah …</p>", "options": ["2", "√2", "2√2", "4", "3"], "answer": 2, "explain": "Rata-rata x̄ = 10. Varians = ((6−10)² + (8−10)² + (10−10)² + (12−10)² + (14−10)²)/5 = (16 + 4 + 0 + 4 + 16)/5 = 8. Simpangan baku = √8 = 2√2."},
+      {"block": "statistika", "type": "pg", "indicator": "Simpangan baku data tunggal", "stem": "<p>Simpangan baku dari data tunggal 2, 6, 10, 14 adalah …</p>", "options": ["√5", "2√5", "4", "5", "10"], "answer": 1, "explain": "Rata-rata x̄ = 8. Varians = ((2−8)² + (6−8)² + (10−8)² + (14−8)²)/4 = (36 + 4 + 4 + 36)/4 = 20. Simpangan baku = √20 = 2√5."},
+      {"block": "statistika", "type": "pg", "indicator": "Simpangan kuartil data kelompok", "stem": "<p>Data nilai ulangan 80 siswa disajikan pada tabel berikut.</p>" + TABLE_23B + "<p>Simpangan kuartil dari data tersebut adalah …</p>", "options": ["7", "8", "9", "10", "11"], "answer": 2, "explain": "Q₁ terletak pada kelas 40–49: Q₁ = 39,5 + 10 × ((20 − 5)/15) = 49,5. Q₃ terletak pada kelas 60–69: Q₃ = 59,5 + 10 × ((60 − 40)/25) = 67,5. Simpangan kuartil = 1/2 × (Q₃ − Q₁) = 1/2 × 18 = 9."},
+      {"block": "statistika", "type": "pg", "indicator": "Simpangan kuartil data kelompok", "stem": "<p>Data nilai ulangan 80 siswa disajikan pada tabel berikut.</p>" + TABLE_23C + "<p>Simpangan kuartil dari data tersebut adalah …</p>", "options": ["4", "5", "6", "7", "8"], "answer": 1, "explain": "Panjang kelas p = 5. Q₁ terletak pada kelas 35–39: Q₁ = 34,5 + 5 × ((20 − 10)/20) = 37. Q₃ terletak pada kelas 45–49: Q₃ = 44,5 + 5 × ((60 − 50)/20) = 47. Simpangan kuartil = 1/2 × (47 − 37) = 5."},
+      {"block": "statistika", "type": "pg", "indicator": "Simpangan kuartil data kelompok", "stem": "<p>Data nilai ulangan 80 siswa disajikan pada tabel berikut.</p>" + TABLE_23D + "<p>Simpangan kuartil dari data tersebut adalah …</p>", "options": ["10", "12", "15", "18", "20"], "answer": 2, "explain": "Q₁ terletak pada kelas 20–29: Q₁ = 19,5 + 10 × ((20 − 10)/20) = 24,5. Q₃ terletak pada kelas 50–59: Q₃ = 49,5 + 10 × ((60 − 50)/20) = 54,5. Simpangan kuartil = 1/2 × (54,5 − 24,5) = 15."},
+      {"block": "statistika", "type": "pg", "indicator": "Interpretasi diagram batang", "stem": "<p>Diagram batang berikut menunjukkan banyaknya siswa yang memilih ekstrakurikuler di suatu sekolah.</p>" + BARCHART_24B + "<p>Banyaknya siswa yang memilih Futsal dan Basket adalah … siswa.</p>", "options": ["30", "35", "40", "45", "50"], "answer": 1, "explain": "Dari diagram, Futsal dipilih 20 siswa dan Basket dipilih 15 siswa. Jumlahnya = 20 + 15 = 35 siswa."},
+      {"block": "statistika", "type": "pg", "indicator": "Interpretasi diagram batang", "stem": "<p>Diagram batang berikut menunjukkan banyaknya siswa yang mengikuti kegiatan di suatu sekolah.</p>" + BARCHART_24C + "<p>Banyaknya siswa yang mengikuti Seni dan Olahraga adalah … siswa.</p>", "options": ["42", "48", "54", "60", "66"], "answer": 2, "explain": "Dari diagram, Seni diikuti 24 siswa dan Olahraga diikuti 30 siswa. Jumlahnya = 24 + 30 = 54 siswa."},
+      {"block": "statistika", "type": "pg", "indicator": "Interpretasi diagram batang", "stem": "<p>Diagram batang berikut menunjukkan banyaknya siswa yang memilih ekstrakurikuler di suatu sekolah.</p>" + BARCHART_24D + "<p>Banyaknya siswa yang memilih Voli dan Badminton adalah … siswa.</p>", "options": ["24", "28", "32", "36", "40"], "answer": 1, "explain": "Dari diagram, Voli dipilih 12 siswa dan Badminton dipilih 16 siswa. Jumlahnya = 12 + 16 = 28 siswa."},
+      {"block": "statistika", "type": "pg", "indicator": "Interpretasi diagram lingkaran", "stem": "<p>Diagram lingkaran berikut menunjukkan hobi 500 siswa di suatu sekolah.</p>" + PIE_25B + "<p>Banyaknya siswa yang mempunyai hobi musik adalah … siswa.</p>", "options": ["80", "100", "120", "150", "200"], "answer": 1, "explain": "Bagian musik pada diagram lingkaran adalah 20%. Banyak siswa = 20/100 × 500 = 100 siswa."},
+      {"block": "statistika", "type": "pg", "indicator": "Interpretasi diagram lingkaran", "stem": "<p>Diagram lingkaran berikut menunjukkan hobi 360 siswa di suatu sekolah.</p>" + PIE_25C + "<p>Banyaknya siswa yang mempunyai hobi membaca adalah … siswa.</p>", "options": ["72", "90", "108", "120", "144"], "answer": 1, "explain": "Bagian membaca pada diagram lingkaran adalah 25%. Banyak siswa = 25/100 × 360 = 90 siswa."},
+      {"block": "statistika", "type": "pg", "indicator": "Interpretasi diagram lingkaran", "stem": "<p>Diagram lingkaran berikut menunjukkan hobi 800 siswa di suatu sekolah.</p>" + PIE_25D + "<p>Banyaknya siswa yang mempunyai hobi sepak bola adalah … siswa.</p>", "options": ["160", "200", "240", "280", "320"], "answer": 2, "explain": "Bagian sepak bola pada diagram lingkaran adalah 30%. Banyak siswa = 30/100 × 800 = 240 siswa."}
     ];
+    var QUESTIONS = [];
+    var SESSION_MODE = "exam";
+    var POINTS_PER_Q = 4;
+    function shuffleArray(a) {
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i]; a[i] = a[j]; a[j] = t;
+      }
+      return a;
+    }
+    function buildSession(mode) {
+      SESSION_MODE = mode;
+      if (mode === "all") {
+        QUESTIONS = QUESTION_BANK.slice();
+      } else {
+        var groups = {};
+        var order = [];
+        QUESTION_BANK.forEach(function (q) {
+          if (!groups[q.indicator]) { groups[q.indicator] = []; order.push(q.indicator); }
+          groups[q.indicator].push(q);
+        });
+        QUESTIONS = [];
+        order.forEach(function (k) {
+          var g = shuffleArray(groups[k].slice());
+          QUESTIONS.push(g[0]);
+        });
+      }
+      POINTS_PER_Q = mode === "all" ? 1 : 4;
+      TOTAL_TIME = mode === "all" ? 360 * 60 : 90 * 60;
+    }
 
     /* ================= State ================= */
     var TOTAL_TIME = 90 * 60; /* 90 menit, dalam detik */
@@ -1034,7 +1209,8 @@
       window.scrollTo(0, 0);
     }
 
-    function startExam() {
+    function startExam(mode) {
+      buildSession(mode || SESSION_MODE);
       current = 0;
       answers = {};
       flagged = {};
@@ -1066,7 +1242,7 @@
     function renderQuestion() {
       var q = QUESTIONS[current];
       var html = "";
-      html += '<div class="qmeta"><span class="qnum">Soal ' + (current + 1) + ' dari 25</span>' +
+      html += '<div class="qmeta"><span class="qnum">Soal ' + (current + 1) + ' dari ' + QUESTIONS.length + '</span>' +
         '<span class="chip">' + BLOCKS[q.block] + '</span>' +
         '<span class="chip type">' + (q.type === "pg" ? "Pilihan Ganda" : q.type === "mcma" ? "Pilihan Ganda Kompleks" : "Isian Singkat") + '</span></div>';
       html += '<div class="qstem">' + q.stem + '</div>';
@@ -1173,7 +1349,7 @@
 
     function updateChrome() {
       var done = answeredCount();
-      $("progress-text").textContent = done + " dari 25 terjawab";
+      $("progress-text").textContent = done + " dari " + QUESTIONS.length + " terjawab";
       $("progress-fill").style.width = (done / QUESTIONS.length * 100) + "%";
       var btns = document.querySelectorAll("[data-nav]");
       for (var i = 0; i < btns.length; i++) {
@@ -1258,12 +1434,12 @@
         else if (isCorrect(i)) { correct++; blockStat[q.block].correct++; }
       });
       var wrong = QUESTIONS.length - correct - empty;
-      var score = correct * 4;
+      var score = correct * POINTS_PER_Q;
 
       $("timeout-note").classList.toggle("hidden", !auto);
       $("score-total").textContent = score;
       var mins = Math.floor(elapsedUsed / 60), secs = elapsedUsed % 60;
-      $("score-sub").textContent = "Kamu menjawab benar " + correct + " dari 25 soal dalam waktu " +
+      $("score-sub").textContent = "Kamu menjawab benar " + correct + " dari " + QUESTIONS.length + " soal dalam waktu " +
         (mins > 0 ? mins + " menit " : "") + secs + " detik." +
         (score >= 80 ? " Kerja yang bagus — pertahankan!" : score >= 60 ? " Sudah cukup baik, tinjau lagi blok yang masih lemah di bawah." : " Jangan menyerah — pelajari pembahasannya dan coba lagi.");
 
@@ -1274,7 +1450,7 @@
       var bs = "";
       order.forEach(function (b) {
         var st = blockStat[b];
-        var pts = st.correct * 4, max = st.total * 4;
+        var pts = st.correct * POINTS_PER_Q, max = st.total * POINTS_PER_Q;
         bs += '<div class="block-score"><div class="row"><span class="name">' + BLOCKS[b] + '</span>' +
           '<span class="val">' + st.correct + '/' + st.total + ' benar · ' + pts + '/' + max + ' poin</span></div>' +
           '<div class="track"><div class="fill" style="width:' + (max ? pts / max * 100 : 0) + '%"></div></div></div>';
@@ -1285,7 +1461,7 @@
       QUESTIONS.forEach(function (q, i) {
         var ok = isCorrect(i);
         var answered = isAnswered(i);
-        var badge = !answered ? '<span class="badge empty">Tidak dijawab</span>' : ok ? '<span class="badge ok">Benar · +4</span>' : '<span class="badge bad">Salah · 0</span>';
+        var badge = !answered ? '<span class="badge empty">Tidak dijawab</span>' : ok ? '<span class="badge ok">Benar · +' + POINTS_PER_Q + '</span>' : '<span class="badge bad">Salah · 0</span>';
         rv += '<article class="review-item"><div class="rhead"><strong>Soal ' + (i + 1) + '</strong>' +
           '<span class="chip">' + BLOCKS[q.block] + '</span>' + badge + '</div>' +
           '<div class="qstem">' + q.stem + '</div>' +
@@ -1303,7 +1479,7 @@
     }
 
     /* ================= Wiring ================= */
-    $("btn-start").addEventListener("click", startExam);
+    $("btn-start").addEventListener("click", function () { startExam("exam"); });
     $("btn-prev").addEventListener("click", function () {
       if (current > 0) { current--; renderQuestion(); updateChrome(); window.scrollTo({ top: 0, behavior: "smooth" }); }
     });
@@ -1314,16 +1490,17 @@
     $("btn-cancel-finish").addEventListener("click", closeConfirm);
     $("btn-confirm-finish").addEventListener("click", function () { finishExam(false); });
     $("modal-overlay").addEventListener("click", function (e) { if (e.target === this) closeConfirm(); });
-    $("btn-retry").addEventListener("click", startExam);
-    $("btn-retry-2").addEventListener("click", startExam);
+    $("btn-retry").addEventListener("click", function () { startExam("exam"); });
+    $("btn-retry-2").addEventListener("click", function () { startExam("exam"); });
     $("btn-materi").addEventListener("click", function () { showScreen("materi"); });
     $("btn-materi-card").addEventListener("click", function () { showScreen("materi"); });
-    $("btn-start-card").addEventListener("click", startExam);
+    $("btn-all-card").addEventListener("click", function () { startExam("all"); });
+    $("btn-start-card").addEventListener("click", function () { startExam("exam"); });
     $("btn-materi-2").addEventListener("click", function () { showScreen("materi"); });
     $("btn-materi-back").addEventListener("click", function () { showScreen("start"); });
     $("btn-materi-back-2").addEventListener("click", function () { showScreen("start"); });
-    $("btn-materi-start").addEventListener("click", startExam);
-    $("btn-materi-start-2").addEventListener("click", startExam);
+    $("btn-materi-start").addEventListener("click", function () { startExam("exam"); });
+    $("btn-materi-start-2").addEventListener("click", function () { startExam("exam"); });
     </script>
   </body>
 </html>
